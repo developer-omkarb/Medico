@@ -1,0 +1,9 @@
+<div class="col-md-12 nopadding" >
+    <div class="card m-1" *ngFor="let notification of notifications">
+        <div class="card-header" [ngClass]="{'red': notification.notificationId === 2, 'green' : notification.notificationId === 1 }">Medico <span class="float-right"><i class="fas fa-minus-circle curser" title="Remove Notification" (click)="markAsRead(notification.id)"></i></span></div>
+        <div class="card-body">{{notification.text}} (<a href="patient/appointment-details/{{notification.appointmentid}}">link</a>)</div>
+    </div>
+</div>
+<div *ngIf="totalNotificationCount == 0" class="text-center light-green-text white m-1 p-1 blockquote">
+    No Notification!
+</div>

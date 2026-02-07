@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col text-left">
+    <h6 class="header-primary bold">Patient Info</h6>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2 text-right">
+    <label>Patient Name:</label>
+  </div>
+  <div class="col-md-2 text-left">
+    <label class="bold">{{appointment.patient.person.firstname}} {{appointment.patient.person.lastname}}</label>
+  </div>
+  <div class="col-md-2 text-right">
+    <label>Email:</label>
+  </div>
+  <div class="col-md-2 text-left">
+    <label class="bold">{{appointment.patient.person.email}}</label>
+  </div>
+  <div class="col-md-2 text-right">
+    <label>DOB:</label>
+  </div>
+  <div class="col-md-2 text-left">
+    <label class="bold">{{appointment.patient.person.dob| date}}</label>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2 text-right">
+    <label>Gender:</label>
+  </div>
+  <div class="col-md-2 text-left">
+    <label class="bold" *ngIf="appointment.patient.person.gender=='M'">Male</label>
+    <label class="bold" *ngIf="appointment.patient.person.gender=='F'">Female</label>
+  </div>
+  <div class="col-md-2 text-right">
+    <label>Contact No.:</label>
+  </div>
+  <div class="col-md-2 text-left">
+    <label class="bold">+{{appointment.patient.person.dialcode + "-"+appointment.patient.person.contactnumber}}</label>
+  </div>
+  <div class="col-md-2 text-right">
+    <label>Ethinicity:</label>
+  </div>
+  <div class="col-md-2 text-left">
+    <label class="bold">{{appointment.patient.person.ethnicity}}</label>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2 text-right">
+    <label>Address:</label>
+  </div>
+  <div class="col-md-6 text-left">
+    <label class="bold">{{appointment.patient.person.address}}</label>
+  </div>
+  <div class="col-md-2 text-right">
+    <label>Physician: </label>
+  </div>
+  <div class="col-md-2 text-left">
+    <label class="bold">Dr. {{appointment.doctorname}}</label>
+  </div> 
+</div>
+
+<div class="row divEnd">
+  <div class="col-md-2 text-right">
+    
+  </div>
+  <div class="col-md-6 text-left">
+    
+  </div>
+  <div class="col-md-2 text-right" *ngIf="appointment.nursename!=null">
+    <label>Nurse: </label>
+  </div>
+  <div class="col-md-2 text-left" *ngIf="appointment.nursename!=null">
+    <label class="bold">{{appointment.nursename}}</label>
+  </div>
+</div>
+<div class="row divEnd" *ngIf="allergyList.length!=0">
+  <div class="col-md-2 text-right">
+    <label>Allergic to: </label>
+  </div>
+  <div class="col-md-10 text-left">
+    <label class="bold" *ngFor="let allergy of allergyList">
+      {{allergy.name}}, &nbsp;
+    </label>
+  </div>
+</div>
+<div class="row">
+  <div class="col text-left">
+    <h6 class="header-primary bold">Appointment Info</h6>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2 text-right">
+    <label>Purpose:</label>
+  </div>
+  <div class="col-md-4 text-left">
+    <label class="bold">{{appointment.title}}</label>
+  </div>
+  <div class="col-md-3 text-right">
+    <label>Scheduled Date:</label>
+  </div>
+  <div class="col-md-3 text-left">
+    <label class="bold">{{appointment.apptdate | date}} {{appointment.timeslot.value}}</label>
+  </div>
+</div>
+<div class="row divEnd">
+  <div class="col-md-2 text-right" *ngIf="appointment.description!=null">
+    <label>Description:</label>
+  </div>
+  <div class="col-md-10 text-left" *ngIf="appointment.description!=null">
+    <label class="bold">{{appointment.description}}</label>
+  </div>
+</div>

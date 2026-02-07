@@ -1,0 +1,200 @@
+<div class="backdrop">
+    <div class="m-3">
+        <div class="row">
+          <hr class="clearfix w-100 d-md-none pb-3">
+            <div class="col">
+                <div class="card">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Appointment</h5>
+                        <span class="float-right">Appointment Status : <span [ngClass]="{'blue': selectedTableRow.appointmentStatus === 'Awaited', 'green' : selectedTableRow.appointmentStatus === 'Confirmed', 'red' : selectedTableRow.appointmentStatus === 'Declined', 'yellow' : selectedTableRow.appointmentStatus === 'Cancelled', 'sky-blue' : selectedTableRow.appointmentStatus === 'Visited' }">{{selectedTableRow.appointmentStatus|uppercase}}</span></span>
+                    </div>
+                    <div class="modal-body">
+                      <form [formGroup]="appointmentEditForm">
+                      <div class="row">
+                        <div class="col">
+                          <div class="md-form form-group">
+                            <label for="appointmentTitle">Appointment Title<small class="text-danger"> (Required)</small></label>
+                            <input formControlName="appointmentTitle" mdbInput type="text" class="form-control textfield" id="appointmentTitle">
+
+                            <div #appointmentTitleerrors *ngIf="appointmentTitle.touched && appointmentTitle.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,appointmentTitleerrors)"></erroricon>
+
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="appointmentTitle.hasError('required')">- This field is Required</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col" *ngIf="!isRolePatient">
+                          <div class="md-form form-group">
+                            <label for="patient" class="select-label">Patient</label>
+                            <select mdbInput class="browser-default custom-select dropdowns textfield" name="patient" formControlName="patient">
+                              <option *ngFor="let patient of patients" value={{patient.key}}>
+                                {{patient.value}}
+                              </option>
+                              
+                            </select>
+                            <div #patienterrors *ngIf="patient.touched && patient.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,patienterrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="patient.hasError('required')">- This field is Required</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col">
+                          <div class="md-form form-group">
+                            <label for="physician" class="select-label">Physician<small class="text-danger"> (Required)</small></label>
+                            <select mdbInput class="browser-default custom-select dropdowns textfield" name="physician" formControlName="physician"  (change)="physicianSeleted()">
+                              <option *ngFor="let physician of physicians" value={{physician.key}}>
+                                {{physician.value}}
+                              </option>
+                            </select>
+                            <div #physicianerrors *ngIf="physician.touched && physician.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,physicianerrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="physician.hasError('required')">- This field is Required</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      <div class="col" *ngIf="!isRolePatient">
+                          <div class="md-form form-group">
+                            <label for="">Physician Id</label>
+                            <input formControlName="physicianId" mdbInput type="text" class="form-control textfield" id="physicianId">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col"  *ngIf="!isRolePatient">
+                          <div class="md-form form-group">
+                            <label for="nurse" class="select-label">Nurse<small class="text-danger"> (Required)</small></label>
+                            <select mdbInput class="browser-default custom-select dropdowns textfield" name="nurse" formControlName="nurse" >
+                              <option *ngFor="let nurse of nurses" value={{nurse.key}}>
+                                {{nurse.value}}
+                              </option>
+                            </select>
+                            <div #nurseerrors *ngIf="nurse.touched && nurse.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,nurseerrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="nurse.hasError('required')">- This field is Required</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="md-form form-group">
+                            <label for="">Appointment Date<small class="text-danger"> (Required)</small></label>
+                            <!-- <input formControlName="appointmentDate" mdbInput type="date" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" class="form-control textfield" id="appointmentDate" (ngModelChange)="atAppointmentDateChange()"> -->
+                            <input mdbInput type="text" id="appointmentDate" name="DOB" class="form-control textfield"
+                            #datepickerDOB="bsDatepicker" bsDatepicker (ngModelChange)="atAppointmentDateChange()"
+                            [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" formControlName="appointmentDate" />
+                            <div #appointmentDateerrors *ngIf="appointmentDate.touched && appointmentDate.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,appointmentDateerrors)"></erroricon>
+
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="appointmentDate.hasError('required')">- This field is Required</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group md-form">
+                            <label for="appointmentSlot" class="select-label">Appointment Slot<small class="text-danger"> (Required)</small></label>
+                            <select mdbInput class="browser-default custom-select dropdowns textfield" name="appointmentSlot" formControlName="appointmentSlot">
+                              <option *ngFor="let timeSlot of appointmentSlots" value={{timeSlot.key}}>
+                                {{timeSlot.value|twelvehourformat}}
+                              </option>
+                            </select>
+                            <div #appointmentSloterrors *ngIf="appointmentSlot.touched && appointmentSlot.invalid" class="erroriconwrapper text-right">
+                              <erroricon (click)="showPopover($event,appointmentSloterrors)"></erroricon>
+                              <div class="errPopover">
+                                  <p class="text-danger inputfieldwarnings" *ngIf="appointmentSlot.hasError('required')">- This field is Required</p>
+                              </div>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group md-form">
+                            <label for="appointmentAction" class="select-label">Action<small class="text-danger"> (Required)</small></label>
+                            <select mdbInput class="browser-default custom-select dropdowns textfield" name="appointmentAction" formControlName="appointmentAction">
+                              <option *ngFor="let action of appointmentActions" value={{action.key}}>
+                                {{action.value}}
+                              </option>
+                            </select>
+                            <div #appointmentActionerrors *ngIf="appointmentAction.touched && appointmentAction.invalid" class="erroriconwrapper text-right">
+                              <erroricon (click)="showPopover($event,appointmentActionerrors)"></erroricon>
+                              <div class="errPopover">
+                                  <p class="text-danger inputfieldwarnings" *ngIf="appointmentAction.hasError('required')">- This field is Required</p>
+                              </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3" *ngIf="!isRolePatient">
+                          <div class="md-form form-group">
+                            <label for="createdBy">Created By</label>
+                            <input formControlName="createdBy" mdbInput type="text" class="form-control textfield" id="createdBy">
+
+                            <div #createdByerrors *ngIf="createdBy.touched && createdBy.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,createdByerrors)"></erroricon>
+
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="createdBy.hasError('required')">- This field is Required</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3" *ngIf="!isRolePatient">
+                          <div class="md-form form-group">
+                            <label for="modifiedBy">Modified By</label>
+                            <input formControlName="modifiedBy" mdbInput type="text" class="form-control textfield" id="modifiedBy">
+
+                            <div #modifiedByerrors *ngIf="modifiedBy.touched && modifiedBy.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,modifiedByerrors)"></erroricon>
+
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="modifiedBy.hasError('required')">- This field is Required</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="md-form form-group">
+                            <label for="description">Appointment Description</label>
+                            <input formControlName="description" mdbInput type="text" class="form-control textfield" id="description">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="md-form form-group">
+                            <label for="modifiedReason">Reason of Modification<small class="text-danger"> (Required)</small></label>
+                            <input formControlName="modifiedReason" mdbInput type="text" class="form-control textfield" id="modifiedReason">
+
+                            <div #modifiedReasonerrors *ngIf="modifiedReason.touched && modifiedReason.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,modifiedReasonerrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="modifiedReason.hasError('required')">- This field is Required</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <input type="hidden" id="appointmentId" name="appointmentId" formControlName="appointmentId">
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal"
+                            (click)="closeAppointmentPrompt();">Cancel</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!appointmentEditForm.valid"
+                            (click)="UpdateAppointmentDetails()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

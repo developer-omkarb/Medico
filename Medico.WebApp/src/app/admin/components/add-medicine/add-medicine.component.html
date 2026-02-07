@@ -1,0 +1,128 @@
+<div class="backdrop">
+    <div class="medicineModal">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center">
+            <span class="cardHeading">Medicine Details</span>
+          </div>
+          <form [formGroup]="medicineForm" (ngSubmit)="saveMedicineDetails()">
+            <div class="row">
+              <div class="col">
+                  <div class="form-group md-form">
+                    <label for="appno">App No.</label>
+                      <input mdbInput name="appno" type="text" formControlName="appno" class="form-control textfield">
+                      <div #appnoerrors *ngIf="appno.touched && appno.invalid" class="erroriconwrapper text-right">
+                        <erroricon (click)="showPopover($event,appnoerrors)"></erroricon>
+                        <div class="errPopover">
+                            <p class="text-danger inputfieldwarnings" *ngIf="appno.hasError('required')">- Enter app no.</p>
+                        </div>
+                    </div>
+                    </div>
+              </div>
+              <div class="col">
+                    <div class="form-group md-form">
+                      <label for="medicinnumber">Medicine No.</label>
+                      <input mdbInput name="medicinnumber" type="text" formControlName="medicinnumber" class="form-control textfield">
+                      <div #medicinnumbererrors *ngIf="medicinnumber.touched && medicinnumber.invalid" class="erroriconwrapper text-right">
+                        <erroricon (click)="showPopover($event,medicinnumbererrors)"></erroricon>
+                        <div class="errPopover">
+                            <p class="text-danger inputfieldwarnings" *ngIf="medicinnumber.hasError('required')">- Enter medicine no.</p>
+                        </div>
+                    </div>
+                      </div>
+                </div>
+              </div>
+              <div class="row">
+              <div class="col">
+                  <div class="form-group md-form">
+                    <label for="form">Form</label>
+                    <input mdbInput name="form" type="text" formControlName="form" class="form-control textfield">
+                    
+                      <div #formerrors *ngIf="form.touched && form.invalid" class="erroriconwrapper text-right">
+                        <erroricon (click)="showPopover($event,formerrors)"></erroricon>
+                        <div class="errPopover">
+                            <p class="text-danger inputfieldwarnings" *ngIf="form.hasError('required')">- Enter form.</p>
+                        </div>
+                    </div>
+                    </div>
+              </div>
+              <div class="col">
+                <div class="form-group md-form">
+                  <label for="strength">Strength</label>
+                  <input mdbInput name="strength" type="text" formControlName="strength" class="form-control textfield">
+                  
+                    <div #strengtherrors *ngIf="strength.touched && strength.invalid" class="erroriconwrapper text-right">
+                      <erroricon (click)="showPopover($event,strengtherrors)"></erroricon>
+                      <div class="errPopover">
+                          <p class="text-danger inputfieldwarnings" *ngIf="strength.hasError('required')">- Enter strength.</p>
+                      </div>
+                  </div>
+                  </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+                <div class="form-group md-form">
+                  <label for="referencedrug">Reference Drug</label>
+                  <input mdbInput name="referencedrug" type="text" formControlName="referencedrug" class="form-control textfield">
+                  
+                    <div #referencedrugerrors *ngIf="referencedrug.touched && referencedrug.invalid" class="erroriconwrapper text-right">
+                      <erroricon (click)="showPopover($event,referencedrugerrors)"></erroricon>
+                      <div class="errPopover">
+                          <p class="text-danger inputfieldwarnings" *ngIf="referencedrug.hasError('required')">- Enter reference drug.</p>
+                      </div>
+                  </div>
+                  </div>
+            </div>
+            <div class="col">
+              <div class="form-group md-form">
+                <label for="activeingredient">Active Ingredient</label>
+                <input mdbInput name="activeingredient" type="text" formControlName="activeingredient" class="form-control textfield">
+                
+                  <div #activeingredienterrors *ngIf="activeingredient.touched && activeingredient.invalid" class="erroriconwrapper text-right">
+                    <erroricon (click)="showPopover($event,activeingredienterrors)"></erroricon>
+                    <div class="errPopover">
+                        <p class="text-danger inputfieldwarnings" *ngIf="activeingredient.hasError('required')">- Enter active ingredient.</p>
+                    </div>
+                </div>
+                </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col">
+              <div class="form-group md-form">
+                <label for="drugname">Drug Name</label>
+                <input mdbInput name="drugname" type="text" formControlName="drugname" class="form-control textfield">
+                  <div #drugnameerrors *ngIf="drugname.touched && drugname.invalid" class="erroriconwrapper text-right">
+                    <erroricon (click)="showPopover($event,drugnameerrors)"></erroricon>
+                    <div class="errPopover">
+                        <p class="text-danger inputfieldwarnings" *ngIf="drugname.hasError('required')">- Enter drug name.</p>
+                    </div>
+                </div>
+                </div>
+          </div>
+        </div>
+      <div class="row" *ngIf="!isAddMode">
+        <div class="col">
+            <div class="form-check text-left">
+                <input class="form-check-input" type="checkbox" name="depracted" formControlName="isDeprecated">
+                <label class="form-check-label labelColor" for="depracted">
+                  Deprecate
+                </label>
+              </div>
+                
+              </div>
+        </div>
+      <div class="row">
+        <div class="col text-center">
+          <button type="submit" class="btn btn-success rounded mr-1" [disabled]="!medicineForm.valid">Save</button>
+      <button class="btn btn-warning rounded" (click)="closePopUp()">Cancel</button>
+        </div>
+      </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

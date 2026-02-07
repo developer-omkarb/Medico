@@ -1,0 +1,38 @@
+div {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+.button-position {
+  min-width: 13%;
+  margin-right: 2%;
+}
+
+.registercard {
+  position: relative;
+  border: solid 2px #38b4ed65;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px #38b4ed65,0 5px 15px rgba(0,0,0,.07);
+}
+
+.register-title {
+  color: black;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+
+.success-msg {
+  color: green;
+  font-weight: bold;
+}
+
+.error-img {
+  transform: scale(0.8);
+  width: 3.3vh;
+  height: 3vh;
+}
+.img-margin
+{
+  margin-top: 12%;
+}

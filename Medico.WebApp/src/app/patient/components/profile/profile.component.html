@@ -1,0 +1,454 @@
+<div class="row p-5 nopadding">
+    <div class="card col-md-12 card-blueshadow nopadding">
+        <form [formGroup]="PatientDetailsForm">
+            <div class="row-cols-12">
+                <accordion [isAnimated]="true">
+                    <accordion-group [isOpen]="true" heading="Demographic Details">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="form-group md-form">
+                                    <label class="select-label" for="title">Title</label>
+                                    <select mdbInput class="browser-default custom-select textfield dropdowns" formControlName="title" name="title">
+                                        <option *ngFor="let title of titles" value={{titles.indexOf(title)+11}}>
+                                            {{title.value}}
+                                        </option>
+                                    </select>
+                                    <div #titleerrors *ngIf="title.touched && title.invalid" class="selecterroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,titleerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="title.hasError('required')">
+                                                - Select title.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="md-form form-group">
+                                    <label for="">First Name</label>
+                                    <input formControlName="firstNameP" mdbInput type="text" class="form-control textfield" id="firstName">
+
+                                    <div #firstnameerrors *ngIf="firstNameP.touched && firstNameP.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,firstnameerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="firstNameP.hasError('required')">- Enter Firstname.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <label>Last Name</label>
+                                    <input mdbInput formControlName="lastNameP" type="text" class="form-control textfield">
+
+                                    <div #lastnameerrors *ngIf="lastNameP.touched && lastNameP.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,lastnameerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="lastNameP.hasError('required')">- Enter Lastname.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <label>Date of Birth</label>
+                                    <input mdbInput type="text" (bsValueChange)="setAge()" name="dob" class="form-control textfield" #datepickerDOB="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [maxDate]="today" formControlName="dob" />
+                                    <div #doberrors *ngIf="dob.touched && dob.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,doberrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="dob.hasError('required')">- Enter Date of Birth.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <label>Age</label>
+                                    <input mdbInput formControlName="age" readonly type="text" class="form-control textfield">
+
+                                    <div #ageerrors *ngIf="age.touched && age.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,ageerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="age.hasError('required')">- Enter age.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group md-form">
+                                    <label class="select-label" for="gender">Gender</label>
+                                    <select mdbInput class="browser-default custom-select textfield dropdowns" formControlName="gender" name="gender">
+                                        <option *ngFor="let gender of genders" value={{gender.charAt(0)}}>
+                                            {{gender}}
+                                        </option>
+                                    </select>
+                                    <div #gendererrors *ngIf="gender.touched && gender.invalid" class="selecterroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,gendererrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="gender.hasError('required')">
+                                                - Select gender.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <input mdbInput type="text" formControlName="race" class="form-control textfield" id="race">
+                                    <div #raceerrors *ngIf="race.touched && race.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,raceerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="race.hasError('required')">
+                                                - Enter race.</p>
+                                            <p class="text-danger inputfieldwarnings" *ngIf="race.hasError('maxLength')">
+                                                - Kindly put 50 or less characters.</p>
+                                        </div>
+                                    </div>
+                                    <label for="race">Race</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <input mdbInput type="text" formControlName="ethnicity" class="form-control textfield" id="ethnicity">
+                                    <div #ethnicityerrors *ngIf="ethnicity.touched && ethnicity.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,ethnicityerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="ethnicity.hasError('required')">- Enter ethnicity.</p>
+                                        </div>
+                                    </div>
+                                    <label for="ethnicity">Ethnicity</label>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <div class="md-form form-group">
+                                        <input mdbInput formControlName="languagesKnown" type="text" class="form-control textfield" id="languagesKnown">
+                                        <div #languagesKnownerrors *ngIf="languagesKnown.touched && languagesKnown.invalid" class="erroriconwrapper text-right">
+                                            <erroricon (click)="showPopover($event,languagesKnownerrors)"></erroricon>
+
+                                            <div class="errPopover">
+                                                <p class="text-danger inputfieldwarnings" *ngIf="languagesKnown.hasError('required')">- Enter languagesKnown.
+                                                </p>
+                                                <p class="text-danger inputfieldwarnings" *ngIf="languagesKnown.hasError('maxLength')">
+                                                    - Kindly put 50 or less characters.</p>
+                                            </div>
+                                        </div>
+
+                                        <label for="languagesKnown">Languages Known</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <input mdbInput type="email" formControlName="email" class="form-control textfield" id="">
+                                    <div #emailerrors *ngIf="email.touched && email.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,emailerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="email.hasError('required')">- Enter email.</p>
+                                            <p class="text-danger inputfieldwarnings" *ngIf="email.hasError('email')">- Enter valid email.</p>
+                                        </div>
+                                    </div>
+
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <input mdbInput type="text" formControlName="ContactNo" class="form-control textfield" id="ContactNo" ng2TelInput [ng2TelInputOptions]="{initialCountry: 'in'}" (ng2TelOutput)="getNumber($event)" (intlTelInputObject)="telInputObject($event)" (countryChange)="onCountryChange($event)">
+                                    <div #ContactNoerrors *ngIf="ContactNo.touched && ContactNo.invalid" class="contactNoerroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,ContactNoerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="ContactNo.hasError('required')">- Enter Contact No.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="md-form form-group">
+                                    <input type="text" id="address" formControlName="address" mdbInput class="md-textarea form-control textfield" />
+                                    <div #addresserrors *ngIf="address.touched && address.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,addresserrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="address.hasError('required')">- Enter address.</p>
+                                        </div>
+                                    </div>
+
+                                    <label for="address">Address</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </accordion-group>
+
+                    <accordion-group heading="Emergency Contact Information">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="form-group md-form">
+                                    <label class="select-label" for="emTitle">Title</label>
+                                    <select mdbInput class="browser-default custom-select textfield dropdowns" formControlName="emTitle" name="emTitle">
+                                        <option *ngFor="let title of titles" value={{titles.indexOf(title)+1}}>
+                                            {{title.value}}
+                                        </option>
+                                    </select>
+                                    <div #emTitleerrors *ngIf="emTitle.touched && emTitle.invalid" class="selecterroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,emTitleerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="emTitle.hasError('required')">
+                                                - Select title.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="md-form form-group">
+                                    <input formControlName="emFirstName" mdbInput type="text" class="form-control textfield" id="emFirstName">
+                                    <div #emFirstNameerrors *ngIf="emFirstName.touched && emFirstName.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,emFirstNameerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="emFirstName.hasError('required')">- Enter First Name.</p>
+                                        </div>
+                                    </div>
+
+                                    <label for="emFirstName">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <input formControlName="emLastName" mdbInput type="text" class="form-control textfield" id="emLastName">
+                                    <div #emLastNameerrors *ngIf="emLastName.touched && emLastName.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,emLastNameerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="emLastName.hasError('required')">- Enter Last Name.</p>
+                                        </div>
+                                    </div>
+
+                                    <label for="emLastName">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group md-form">
+                                    <label class="select-label" for="relationship">Relationship</label>
+                                    <select mdbInput class="browser-default custom-select textfield dropdowns" formControlName="emRelationship" name="emRelationship">
+                                        <option *ngFor="let relation of relations" value={{relation}}>
+                                            {{relation}}
+                                        </option>
+                                    </select>
+                                    <div #emRelationshiperrors *ngIf="emRelationship.touched && emRelationship.invalid" class="selecterroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,emRelationshiperrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="emRelationship.hasError('required')">- Select Relationship.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <input formControlName="emEmail" mdbInput type="email" id="emEmail" name="emEmail" class="form-control textfield">
+                                    <div #emEmailerrors *ngIf="emEmail.touched && emEmail.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,emEmailerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="emEmail.hasError('required')">- Enter Email.</p>
+                                            <p class="text-danger inputfieldwarnings" *ngIf="emEmail.hasError('email')">- Enter valid email.</p>
+                                        </div>
+                                    </div>
+
+                                    <label for="emEmail">Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <input mdbInput type="text" formControlName="emContactNo" class="form-control textfield" id="emContactNo" ng2TelInput [ng2TelInputOptions]="{initialCountry: 'in'}" (ng2TelOutput)="getNumber($event)" (intlTelInputObject)="telInputObject($event)" (countryChange)="onCountryChange($event)">
+                                    <div #emContactNoerrors *ngIf="emContactNo.touched && emContactNo.invalid" class="contactNoerroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,emContactNoerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="emContactNo.hasError('required')">- Enter Contact No.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form form-group">
+                                    <input type="text" id="emAddress" (change)="emAddressCheckBox.setValue(false)" formControlName="emAddress" mdbInput class="md-textarea form-control textfield" />
+
+                                    <div #emAddresserrors *ngIf="emAddress.touched && emAddress.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,emAddresserrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="emAddress.hasError('required')">- Enter Address.</p>
+                                        </div>
+                                    </div>
+
+                                    <label for="emAddressCheckBox">Address</label>
+                                    <div class="form-group col-md-10 offset-1">
+                                        <input #addrChecked (change)="changeAddress()" type="checkbox" formControlName="emAddressCheckBox" class="form-check-input">
+                                        <span style="color: rgb(0, 153, 255); font-size: smaller; font-weight: bold;"><em>
+                                                Set Address same as above</em>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 offset-md-4">
+                                <div class="form-group">
+                                    <input type="checkbox" formControlName="emPortalAccess" class="form-check-input">
+                                    <strong class="text-primary"> Do you need access to patient
+                                        portal ?
+                                    </strong>
+                                </div>
+                            </div>
+
+                        </div>
+                    </accordion-group>
+
+                    <accordion-group heading="Allergies Details">
+                        <div class="row">
+                            <div class="col-md-5 offset-md-4">
+                                <div class="form-group">
+                                    <input (change)="makeAllergyFormValid()" type="checkbox" formControlName="allergyCheckBox" class="form-check-input">
+                                    <strong class="text-primary"> Patient has any known allergies?
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group md-form">
+                                    <label class="select-label" for="">Allergy ID</label>
+                                    <select mdbInput (blur)="fillClinicalInfo()" (change)="loadDDByAllergyID($event)" disabled class="browser-default custom-select textfield dropdowns" formControlName="allergyID" name="allergyID">
+                                        <option *ngFor="let allergy of allergyDetail" value={{allergy.allergyid}}>
+                                            {{allergy.allergyid}} </option>
+                                    </select>
+                                    <div #allergyIDerrors *ngIf="allergyID.touched && allergyID.invalid" class="selecterroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,allergyIDerrors)"></erroricon>
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="allergyID.hasError('required')">- Select Allergy Id.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group md-form">
+                                    <label class="select-label" for="">Allergy Type</label>
+                                    <select mdbInput (blur)="fillClinicalInfo()" (change)="loadDDByAllergyType($event)" disabled class="browser-default custom-select textfield dropdowns" formControlName="allergyType" name="allergyType">
+                                        <option *ngFor="let allergy of allergyDetailType" value={{allergy.type}}>
+                                            {{allergy.type}}
+                                        </option>
+                                    </select>
+                                    <div #allergyTypeerrors *ngIf="allergyType.touched && allergyType.invalid" class="selecterroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,allergyTypeerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="allergyType.hasError('required')">- Select Allergy Type.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group md-form">
+                                    <label class="select-label" for="">Allergy Name</label>
+                                    <select mdbInput (blur)="fillClinicalInfo()" (change)="loadDDByAllergyName($event)" disabled class="browser-default custom-select textfield dropdowns" formControlName="allergyName" name="allergyName">
+                                        <option *ngFor="let allergy of allergiesFiltered" value={{allergy.name}}>
+                                            {{allergy.name}}
+                                        </option>
+                                    </select>
+                                    <div #allergyNameerrors *ngIf="allergyName.touched && allergyName.invalid" class="selecterroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,allergyNameerrors)"></erroricon>
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="allergyName.hasError('required')">- Select Allergy Name.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="md-form form-group">
+                                    <input disabled formControlName="allergyDesc" mdbInput type="text" class="form-control textfield" id="allergyDesc">
+                                    <div #allergyDescerrors *ngIf="allergyDesc.touched && allergyDesc.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,allergyDescerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="allergyDesc.hasError('required')">- Enter Allergy Description.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <label for="allergyDesc">Allergy Description</label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="md-form form-group">
+                                    <input disabled formControlName="allergyClinicInfo" mdbInput type="text" class="form-control textfield" id="allergyClinicInfo">
+                                    <div #allergyClinicInfoerrors *ngIf="allergyClinicInfo.touched && allergyClinicInfo.invalid" class="erroriconwrapper text-right">
+                                        <erroricon (click)="showPopover($event,allergyClinicInfoerrors)"></erroricon>
+
+                                        <div class="errPopover">
+                                            <p class="text-danger inputfieldwarnings" *ngIf="allergyClinicInfo.hasError('required')">- Enter Allergy Description.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <label for="allergyClinicInfo">Allergy Clinical Information</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 offset-md-4">
+                                <div class="form-group">
+                                    <input disabled type="checkbox" formControlName="allergyFatalCheckBox" class="form-check-input">
+                                    <strong class="text-primary"> is allergy fatal?
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+
+                    </accordion-group>
+                </accordion>
+                <br>
+                <button type="submit" class="btn btn-success offset-md-5" [disabled]="PatientDetailsForm.invalid" (click)="savePatientProfile($event)" value="Submit">Submit</button> &nbsp; &nbsp;
+                <button type="reset" class="btn btn-danger" (click)="PatientDetailsForm.reset" value="Reset">Reset</button>
+                <br>
+                <br>
+            </div>
+        </form>
+    </div>
+
+</div>

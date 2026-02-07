@@ -1,0 +1,17 @@
+<tabset>
+    <tab heading="Patient Details">
+        <app-profile [appointmentId]="appointmentId"></app-profile>
+    </tab>
+    <tab heading="Visit Details">
+        <app-vital-signs [appointmentId]="appointmentId"></app-vital-signs>
+    </tab>
+    <tab heading="Diagnosis Details">
+        <app-diagnosis [appointmentId]="appointmentId"></app-diagnosis>
+    </tab>
+    <tab heading="Procedures Details">
+        <app-procedure-details [appointmentId]="appointmentId"></app-procedure-details>
+    </tab>
+    <tab heading="Medication Details">
+        <app-add-medication [appointmentId]="appointmentId"></app-add-medication>
+    </tab>
+</tabset>

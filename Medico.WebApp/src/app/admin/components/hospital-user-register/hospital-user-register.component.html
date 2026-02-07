@@ -1,0 +1,310 @@
+<div class="row topMarginContent">
+  <div class="col-md-12 mt-md-0 mt-6">
+    <div class="row">
+      <!--<div class="col-md-4 mt-md-0 mt-2">
+        <img class="img-fluid" src="./assets/images/imageRegister.JPG" alt="Register-Medico" />
+      </div>-->
+      <hr class="clearfix w-100 d-md-none pb-3">
+      <div class="col-md-7 mt-md-0 mt-4">
+        <div class="card registercard">
+          <div class="card-body" *ngIf="!showThankYou">
+            <div class="text-center">
+              <h4>Register</h4>
+
+            </div>
+            <div class="text-center" *ngIf="successMessage!='' && showThankYou">
+              <font style="color:green;font-weight:bold">{{successMessage}}</font>
+            </div>
+            <form [formGroup]="registerForm">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group md-form">
+                    <select class="browser-default custom-select dropdowns" name="title" formControlName="title">
+                      <option value="">Title</option>
+                      <option *ngFor="let title of titles" value={{title.value}}>
+                        {{title.value}}
+                      </option>
+                    </select>
+                    <div [hidden]="!(title.touched && title.invalid)" class="mt-5 row col-3 offset-10">
+
+                  <img (click)="showPopover($event.target)" class="error-img"
+                       src="./assets/images/exc-mark.png" id="myuserimg" tabindex="0" alt="error" data-toggle="popover">
+                       <div class="d-none" id="titlerrors">
+                        <div *ngIf="title.touched && title.invalid">
+                          <p class="text-danger inputfieldwarnings" [hidden]="!title.hasError('required')">Select Title.</p>
+                        </div>
+                       </div>
+                       </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group md-form">
+                    <label for="firstName">First Name</label>
+                    <input mdbInput type="text" 
+                           name="firstName" id="firstnameInput"
+                           class="form-control textfield" formControlName="firstName" />
+                           <div [hidden]="!(firstName.touched && firstName.invalid)" class="mt-5 row col-3 offset-10">
+
+                  <img (click)="showPopover($event.target)" class="error-img"
+                       src="./assets/images/exc-mark.png" id="myuserimg" tabindex="0" alt="error" data-toggle="popover" data-trigger ="focus">
+                       <div class="d-none" id="firstnameerors">
+                        
+                          <div *ngIf="firstName.touched && firstName.invalid">
+                            <p class="text-danger inputfieldwarnings" *ngIf="firstName.hasError('required')">Enter first name.</p>
+                          </div>
+                          <div *ngIf="firstName.touched && firstName.invalid && firstName.dirty">
+                            <p class="text-danger inputfieldwarnings" *ngIf="!firstName.hasError('minLength')">First name must have at least 3 characters.</p>
+                          </div>
+                         </div>
+                         </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group md-form">
+                    <label for="lastName">Last Name</label>
+                    <input mdbInput type="text"
+                           name="lastName"
+                           class="form-control textfield"
+                           formControlName="lastName" />
+                    <!-- <div #lastNameerrors *ngIf="lastName.touched && lastName.invalid" class="erroriconwrapper">
+                      <erroricon (click)="showPopover($event,lastNameerrors)"></erroricon>
+
+                      <div class="errPopover" *ngIf="lastName.touched && lastName.invalid">
+                        <p class="text-danger inputfieldwarnings" [hidden]="!lastName.hasError('required')">Enter last name.</p>
+                      </div>
+                      <div class="errPopover" *ngIf="lastName.touched && lastName.invalid && lastName.dirty">
+                        <p class="text-danger inputfieldwarnings" [hidden]="lastName.hasError('minLength')">Last name must have at least 3 characters.</p>
+                      </div>
+                    </div> -->
+                    <div [hidden]="!(lastName.touched && lastName.invalid)" class="mt-5 row col-3 offset-10">
+
+                  <img (click)="showPopover($event.target)" class="error-img"
+                       src="./assets/images/exc-mark.png" id="myuserimg" tabindex="0" alt="error" data-toggle="popover" data-trigger ="focus">
+                       <div class="d-none" id="lastnameerors">
+                        <div *ngIf="lastName.touched && lastName.invalid">
+                          <p class="text-danger inputfieldwarnings" *ngIf="lastName.hasError('required')">Enter last name.</p>
+                        </div>
+                        <div *ngIf="lastName.touched && lastName.invalid && lastName.dirty">
+                          <p class="text-danger inputfieldwarnings" *ngIf="!lastName.hasError('minLength')">Last name must have at least 3 characters.</p>
+                        </div>
+                        </div>
+                        </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+
+
+                <div class="col-md-2">
+                  <div class="form-group md-form">
+                    <select class="browser-default custom-select dropdowns" name="gender" formControlName="gender">
+                      <option value="">Gender</option>
+                      <option value="M">Male</option>
+                      <option value="F">Female</option>
+                      <option value="O">Others</option>
+                    </select>
+                    <!--<div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" value="male" formControlName="gender">
+                      <span class="form-check-label" for="gender">Male</span>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="gender" value="female" formControlName="gender">
+                      <span class="form-check-label" for="gender">Female</span>
+                    </div>-->
+                    <!-- <div *ngIf="gender.touched && gender.invalid">
+                      <p class="text-danger inputfieldwarnings" [hidden]="!gender.hasError('required')">Select gender.</p>
+                    </div>    --> 
+                    <div [hidden]="!(gender.touched && gender.invalid)" class="mt-5 row col-3 offset-10">
+
+                 <img (click)="showPopover($event.target)" class="error-img"
+                      src="./assets/images/exc-mark.png" id="myuserimg" tabindex="0" alt="error" data-toggle="popover">
+                      <div class="d-none" id="gendererrors">
+                       <div *ngIf="gender.touched && gender.invalid">
+                         <p class="text-danger inputfieldwarnings" *ngIf="gender.hasError('required')">Select gender.</p>
+                       </div>
+                      </div>
+                      </div>       
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group md-form">
+                    <select class="browser-default custom-select dropdowns" name="role" formControlName="role">
+                      <option value="">Role</option>
+                      <option *ngFor="let role of roles" value={{role.name}}>
+                        {{role.name}}
+                      </option>
+                    </select>
+
+
+                    <!-- <div *ngIf="gender.touched && gender.invalid">
+                      <p class="text-danger inputfieldwarnings" [hidden]="!gender.hasError('required')">Select role.</p>
+                    </div> -->
+                    <div [hidden]="!(role.touched && role.invalid)" class="mt-5 row col-3 offset-10">
+
+                 <img (click)="showPopover($event.target)" class="error-img"
+                      src="./assets/images/exc-mark.png" id="myuserimg" tabindex="0" alt="error" data-toggle="popover">
+                      <div class="d-none" id="roleerrors">
+                       <div *ngIf="role.touched && role.invalid">
+                         <p class="text-danger inputfieldwarnings" *ngIf="role.hasError('required')">Select gender.</p>
+                       </div>
+                      </div>
+                      </div>    
+                  </div>
+ 
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group md-form">
+                    <label for="email">Email</label>
+                    <input mdbInput type="text"
+                           name="email"
+                           class="form-control textfield"
+                           formControlName="email"
+                           (blur)="isUserNameExists()" />
+                    <!-- <div #emailerrors *ngIf="email.touched && email.invalid" class="erroremailiconwrapper">
+                      <erroricon (click)="showPopover($event,emailerrors)"></erroricon>
+
+                      <div class="errPopover" *ngIf="email.touched && email.invalid">
+                        <p class="text-danger inputfieldwarnings" [hidden]="!email.hasError('required')">Enter email id.</p>
+                      </div>
+                      <div class="errPopover" *ngIf="email.touched && email.invalid && email.dirty">
+                        <p class="text-danger inputfieldwarnings" [hidden]="!email.hasError('email')">Enter valid email id.</p>
+                      </div>
+                    </div> -->
+                    <div [hidden]="!(email.touched && email.invalid)" class="mt-5 row col-3 offset-10">
+
+                  <img (click)="showPopover($event.target)" class="error-img"
+                       src="./assets/images/exc-mark.png" id="myuserimg" tabindex="0" alt="error" data-toggle="popover" data-trigger ="focus">
+                       <div class="d-none" id="emailerors">
+                        <div *ngIf="email.touched && email.invalid">
+                          <p class="text-danger inputfieldwarnings" *ngIf="email.hasError('required')">Enter email id.</p>
+                        </div>
+                        <div *ngIf="email.touched && email.invalid && email.dirty">
+                          <p class="text-danger inputfieldwarnings" *ngIf="email.hasError('email')">Enter valid email id.</p>
+                          <p class="text-danger inputfieldwarnings" *ngIf="email.hasError('userExists')">Email id already exists.</p>
+                        </div>   
+                      </div>
+                         </div>
+
+
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group md-form">
+                    <label for="employeeID">Employee Code</label>
+                    <input mdbInput type="text"
+                           name="employeeID" id="employeeIDInput"
+                           class="form-control textfield" formControlName="employeeID">
+                    <!-- <div *ngIf="employeeID.touched && employeeID.invalid">
+                      <p class="text-danger inputfieldwarnings" [hidden]="!employeeID.hasError('required')">Enter Employee ID.</p>
+                    </div> -->
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-group md-form">
+                    <label for="DOB">Date of Birth</label>
+                    <input mdbInput type="text"
+                           name="DOB"
+                           class="form-control textfield"
+                           #datepickerDOB="bsDatepicker"
+                           bsDatepicker
+                           [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }"
+                           [maxDate]="today"
+                           formControlName="dob" />
+                           <div [hidden]="!(dob.touched && dob.invalid)" class="mt-5 row col-3 offset-10">
+
+                  <img (click)="showPopover($event.target)" class="error-img"
+                       src="./assets/images/exc-mark.png" id="myuserimg" tabindex="0" alt="error" data-toggle="popover" data-trigger ="focus">
+                       <div class="d-none" id="doberors">
+
+                    <div *ngIf="dob.touched && dob.invalid">
+                      <p class="text-danger inputfieldwarnings" [hidden]="!dob.hasError('required')">Enter date of birth.</p>
+                    </div>
+                    </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- <div class="col-md-2">
+                  <div class="form-group md-form">
+                    <label for="dialCode"></label>
+
+                    <select class="form-control textfield" (focus)="triggerCSS($event)" (blur)="removeCSS($event)" name="dialCode" formControlName="dialCode">
+                      <option value="null">Dial Code</option>
+                      <option *ngFor="let code of dialCodes" value={{code.dialcode}}>
+                        +{{code.dialcode}}
+                      </option>
+                    </select>
+                     <div *ngIf="dialCode.touched && dialCode.invalid">
+                      <p class="text-danger inputfieldwarnings" [hidden]="!dialCode.hasError('required')">Select Dial Code</p>
+                    </div> 
+                  </div>
+                </div> -->
+                <div class="col-md-6">
+                  <div class="form-group md-form">
+                    <input mdbInput type="tel"
+                           name="contactno"
+                           class="form-control textfield"
+                           formControlName="contactNo"
+                           placeholder="Contact No"
+                           ng2TelInput
+                              [ng2TelInputOptions]="{initialCountry: 'in'}"
+                              (ng2TelOutput)="getNumber($event)"
+                              (intlTelInputObject)="telInputObject($event)"
+                              (countryChange)="onCountryChange($event)" />
+                    <!-- <div #contactNoerrors *ngIf="contactNo.touched && contactNo.invalid" class="errorcontacticonwrapper">
+                      <erroricon (click)="showPopover($event,contactNoerrors)"></erroricon>
+
+                      <div class="errPopover" *ngIf="contactNo.touched && contactNo.invalid">
+                        <p class="text-danger inputfieldwarnings" [hidden]="!contactNo.hasError('required')">Enter contact no.</p>
+                      </div>
+
+                      <div class="errPopover" *ngIf="contactNo.touched && contactNo.invalid && contactNo.dirty">
+                        <p class="text-danger inputfieldwarnings" [hidden]="contactNo.hasError('minLength')">Contact no. must be of 10 digits</p>
+                        <p class="text-danger inputfieldwarnings" [hidden]="contactNo.hasError('pattern')">Enter valid contact no.</p>
+                      </div>
+                    </div> -->
+                    <div [hidden]="!(contactNo.touched && contactNo.invalid)" class="row col-3 offset-10"
+                    style="margin-top: -5vh;margin-left: 69%;">
+
+                 <img (click)="showPopover($event.target)" class="error-img"
+                      src="./assets/images/exc-mark.png" id="myuserimg" tabindex="0" alt="error" data-toggle="popover" data-trigger ="focus">
+                      <div class="d-none" id="contactNoerors">
+                        <div *ngIf="contactNo.touched && contactNo.invalid">
+                          <p class="text-danger inputfieldwarnings" *ngIf="contactNo.hasError('required')">Enter contact no.</p>
+                        </div>
+  
+                        <div *ngIf="contactNo.touched && contactNo.invalid && contactNo.dirty">
+                          <p class="text-danger inputfieldwarnings" *ngIf="!contactNo.hasError('minLength')">Contact no. must be of 10 digits</p>
+                          <p class="text-danger inputfieldwarnings" *ngIf="!contactNo.hasError('pattern')">Enter valid contact no.</p>
+                        </div>
+                        </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="row" *ngIf="!showThankYou" style="margin-top: 3%;">
+                <div class="col-md-12 text-center">
+                  <button class="btn button-position" type="submit" [disabled]="!registerForm.valid" (click)="onRegister($event)">Submit</button>
+                  <button type="button" class="btn button-position" [disabled]="!registerForm.valid" (click)="onReset()">Reset</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

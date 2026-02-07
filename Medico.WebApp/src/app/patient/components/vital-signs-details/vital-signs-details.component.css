@@ -1,0 +1,12 @@
+.vital-signs {
+  background-color: #ffdead00;
+  font-weight: bold;
+  border-style: none;
+}
+
+.vital-signs-icon {
+  background-color: #f5deb300;
+  color: white;
+  width: 4vw;
+  border-style: none;
+}

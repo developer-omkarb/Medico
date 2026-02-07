@@ -1,0 +1,28 @@
+.bc-gray{
+    background-color: #eee;
+  }
+  
+  .body {
+    height: 90.5vh;
+  }
+  .example-sidenav-content {
+    display: flex;
+  }
+  
+  .my-custom-scrollbar {
+    position: relative;
+    height: 90.5vh;
+    overflow: auto;
+  }
+  
+  .sidebar {
+    height: 90.5vh;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background-color:   rgba(83, 98, 114, 0.30);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  

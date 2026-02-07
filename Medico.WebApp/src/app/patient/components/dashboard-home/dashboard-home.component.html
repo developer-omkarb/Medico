@@ -1,0 +1,7 @@
+<div class="padding-top-10px">
+    <app-vitalsigns-bar [vitalsigns]="vitalsigns"></app-vitalsigns-bar>
+</div>
+<hr>
+<div class="p-2">
+    <app-appointments-list [showForWeek]="true"  [appointments]="appointments" tableHeaderText="Upcoming appointments till next week" [allowSearchByDate]="false"></app-appointments-list>
+</div>

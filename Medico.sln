@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medico.Data", "Medico.Data\Medico.Data.csproj", "{0FB5A4D9-C889-4E2C-989C-DEC31D85B3E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9705AD0D-5141-44D2-96E6-7633651A2320}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile2.txt = TextFile2.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailSenderService", "EmailSenderService\EmailSenderService.csproj", "{ED952801-7530-4A51-AF74-80F11520EF18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{6B75CFF7-CC14-48BA-AE5D-2E738C245EF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medico.Repository", "Medico.Repository\Medico.Repository.csproj", "{56DC3BF3-7FB9-4994-BEDC-4E7BD568DBF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medico.Service", "Medico.Service\Medico.Service.csproj", "{2F28EC66-EA91-4D00-99E7-B9EF5366EE5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medico.WebAPI", "Medico.WebAPI\Medico.WebAPI.csproj", "{9FD40945-789A-442C-BCF2-9C1CB20F5223}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Medico.WebApp", "Medico.WebApp\", "{AE2E5C35-71A3-4E3C-997C-C612C380AA5E}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_60677"
+		Debug.AspNetCompiler.PhysicalPath = "Medico.WebApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60677\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_60677"
+		Release.AspNetCompiler.PhysicalPath = "Medico.WebApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60677\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "60677"
+		SlnRelativePath = "Medico.WebApp\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FB5A4D9-C889-4E2C-989C-DEC31D85B3E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FB5A4D9-C889-4E2C-989C-DEC31D85B3E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FB5A4D9-C889-4E2C-989C-DEC31D85B3E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FB5A4D9-C889-4E2C-989C-DEC31D85B3E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED952801-7530-4A51-AF74-80F11520EF18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED952801-7530-4A51-AF74-80F11520EF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED952801-7530-4A51-AF74-80F11520EF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED952801-7530-4A51-AF74-80F11520EF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B75CFF7-CC14-48BA-AE5D-2E738C245EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B75CFF7-CC14-48BA-AE5D-2E738C245EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B75CFF7-CC14-48BA-AE5D-2E738C245EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B75CFF7-CC14-48BA-AE5D-2E738C245EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56DC3BF3-7FB9-4994-BEDC-4E7BD568DBF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56DC3BF3-7FB9-4994-BEDC-4E7BD568DBF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56DC3BF3-7FB9-4994-BEDC-4E7BD568DBF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56DC3BF3-7FB9-4994-BEDC-4E7BD568DBF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F28EC66-EA91-4D00-99E7-B9EF5366EE5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F28EC66-EA91-4D00-99E7-B9EF5366EE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F28EC66-EA91-4D00-99E7-B9EF5366EE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F28EC66-EA91-4D00-99E7-B9EF5366EE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD40945-789A-442C-BCF2-9C1CB20F5223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD40945-789A-442C-BCF2-9C1CB20F5223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD40945-789A-442C-BCF2-9C1CB20F5223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD40945-789A-442C-BCF2-9C1CB20F5223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE2E5C35-71A3-4E3C-997C-C612C380AA5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2E5C35-71A3-4E3C-997C-C612C380AA5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE2E5C35-71A3-4E3C-997C-C612C380AA5E}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE2E5C35-71A3-4E3C-997C-C612C380AA5E}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BCA7434-7EF6-4AC1-B7E1-9714000E86F0}
+	EndGlobalSection
+EndGlobal

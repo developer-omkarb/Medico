@@ -1,0 +1,28 @@
+<div class="padding-top-10px">
+  <div class="row">
+    <div class="flex-container m-2">
+      <app-count-panel></app-count-panel>
+    </div>
+
+  </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-5 offset-md-1 text-center">
+        <div style="display: block">
+            <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="chartDatasets"
+              [labels]="chartLabels"
+              [colors]="chartColors"
+              [options]="chartOptions"
+              [legend]="true"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+    </div>
+    <div class="col-md-5 me-md-1 text-center">
+    <app-pie-chart [usersCount]="userTypeCount"></app-pie-chart>
+    </div>
+</div>

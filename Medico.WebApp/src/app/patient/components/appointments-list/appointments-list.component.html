@@ -1,0 +1,42 @@
+<div class="m-2 h3-primary">
+  <h5>{{tableHeaderText}}</h5>
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngIf="allowSearch">
+        <app-table-search (searchTexChangedEvent)="searchTextChanged($event)" placeholderText="Search By Patient, Physician..."></app-table-search>
+      </div>
+    </div>
+    <div class="col-md-4 mt-3">
+      <app-status-colors [showStatus] = "showStatus"></app-status-colors>
+    </div>
+    </div>
+
+
+    <ngx-datatable #apptTable class='bootstrap card-blueshadow'  [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"
+                   [rows]='appointments' [limit]="table_page_size" [rowClass]="getRowClass">
+      <ngx-datatable-column name="Title" prop="appointmentTitle"></ngx-datatable-column>
+      <ngx-datatable-column name="Physician" prop="physicianName">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            Dr. {{row.physicianName}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column>
+        <ng-template let-column="column" ngx-datatable-header-template>
+          Scheduled On
+        </ng-template>
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <strong> {{row.appointmentDate|date}} {{row.appointmentTime|twelvehourformat}}</strong>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Status" *ngIf="showForWeek" prop="appointmentStatus"></ngx-datatable-column>
+      <!-- <ngx-datatable-column name="" prop="appointmentStatusId"></ngx-datatable-column>     -->
+      <!-- <ngx-datatable-column name="" prop="phyId"></ngx-datatable-column>     -->
+      <ngx-datatable-column [width]="5" [minWidth]="5" name="" prop="appointmentId" [sortable]="false">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <a (click)="redirectToAppointmentDetails(value)" class="view-link">
+            <mdb-icon far icon="eye" title="View Details"></mdb-icon>
+          </a>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>

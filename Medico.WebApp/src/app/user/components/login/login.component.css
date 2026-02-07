@@ -1,0 +1,34 @@
+div.erroriconwrapper {
+    margin-top: -7vh;
+}
+
+div.selecterroriconwrapper {
+    margin-top: -5vh;
+}
+
+div.errPopover {
+    display: none;
+}
+
+div.ddposition {
+    margin-top: -1vh;
+}
+
+div {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.lineLogin {
+    height: 500px;
+    width: 2px;
+    border: solid 4px;
+    border-color: rgba(104, 104, 104, 0.178);
+    position: relative;
+    margin-top: -20px;
+    margin-left: 10px;
+}
+
+.img-fluid {
+    width: 90%;
+}

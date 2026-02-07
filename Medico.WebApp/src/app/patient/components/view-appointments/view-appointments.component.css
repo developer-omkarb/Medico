@@ -1,0 +1,38 @@
+button:hover {
+  border: solid;
+  border-color: #075319;
+  transform: scale(1.1,1.1);
+}
+
+button:focus {
+  border: solid;
+  border-color: #38B5ED;
+  background: white;
+  color: #38B5ED;
+  height: 35px;
+  padding: 2px;
+}
+
+button {
+  border: solid;
+  border-color: #09e5ab;
+  background: #09e5ab;
+  color: white;
+  padding: 2px;
+  margin-top: 39%;
+}
+
+.view-link {
+  color: #09e5ab;
+}
+.search-btn
+{
+  height: 6vh;
+  width: 4vw;
+  color: white;
+  border-style: solid;
+  border-color: white;
+  position: absolute;
+  bottom: 16%;
+  right: 67%;
+}

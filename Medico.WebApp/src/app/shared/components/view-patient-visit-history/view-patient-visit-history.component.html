@@ -1,0 +1,18 @@
+<div class="backdrop">
+  <div class="allergyModal">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col text-left">
+            <span class="cardHeading">{{patientName}}'s History</span>
+          </div>
+          <div class="col-md-6 text-right">
+              <i (click)="closePopUp()" class="fas fa-times-circle fa-2x icon-danger" title="Close"></i>
+          </div>
+        </div>
+        
+        <app-patient-visit-history [patientId]="patientId"></app-patient-visit-history>
+      </div>
+    </div>
+  </div>
+</div>

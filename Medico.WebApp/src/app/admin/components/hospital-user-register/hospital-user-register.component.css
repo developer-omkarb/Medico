@@ -1,0 +1,98 @@
+div {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+input::placeholder {
+  opacity: 0.4;
+}
+
+.button-position {
+  min-width: 13%;
+  margin-right: 2%;
+}
+.registerForm {
+  margin-top: 11%;
+}
+.errorMessage {
+  background-color: #ff000033;
+  margin-top: 2%;
+  padding: 1%;
+  border-style: solid;
+  border-color: red;
+  border-width: 1px;
+  color: red;
+  text-align: center;
+}
+.registercard {
+  position: relative;
+  border: solid 2px #38b4ed65;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px #38b4ed65,0 5px 15px rgba(0,0,0,.07);
+}
+.register-title {
+  color: black;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+button {
+  border: solid;
+  border-color: #09E5AB;
+  background: #09E5AB;
+  color: white;
+  padding: 2px;
+}
+
+.labeltransform {
+  transform: translateY(-100%);
+  font-size: .75em;
+}
+
+.contactNo {
+  width: 152%;
+}
+ul.iti__country-list {
+  width: 600% !important;
+}
+div.erroriconwrapper {
+  margin-top: -5vh;
+  margin-left: 48vh;
+}
+div.erroremailiconwrapper {
+  margin-top: -5vh;
+  margin-left: 60vh;
+}
+
+div.errorcontacticonwrapper {
+  margin-top: -5vh;
+  margin-left:32vh;
+}
+
+div.styleMargin {
+  margin-bottom: -1%;
+  margin-left:12vh;
+}
+
+div.errPopover {
+  display: none;
+}
+.error-img {
+  transform: scale(0.8);
+  width: 3.3vh;
+  height: 3vh;
+}
+.dropdowns{
+  border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+.dropdowns:focus{
+  border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+.img-margin
+{
+  margin-top: 12%;
+}

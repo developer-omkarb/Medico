@@ -1,0 +1,15 @@
+<div class="flex-container m-2">
+    <div class="flex-item-left" *ngFor="let card of patientdashboardcardsInfo; let i = index">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{card.imgUrl}}" class="icon">
+                </div>
+                <div class="col-md-8">
+                    <p class="imp_info text-center">{{card.header}}</p>
+                    <p class="text-center"><span class="imp_info_text">{{card.value}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

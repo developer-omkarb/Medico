@@ -1,0 +1,52 @@
+<div class="row padding-top-10px">
+  <div class="col-md-10 offset-md-1 me-md-1 text-center headMargin">
+    <span class="cardHeading">Allergies List</span>
+    <div class="float-right">
+      <a class="addLink" (click)="openPopUp(0)" tooltip="Add Allergy">
+        <i class="fas fa-plus-circle fa-3x" title="Add Allergy"></i>
+        <!-- <img class="img-responsive addImg" mdbTooltip="Add Allergy" src="./assets/images/addrecord.png"/> -->
+      </a>
+      <app-add-allergy [allergy]="selectedAllergy" (onCloseEvent)="closePopUp($event)" *ngIf="showPopUp"></app-add-allergy>
+    </div>
+  </div>
+  </div>
+  <div class="row" *ngIf="showMessage">
+    <div class="col text-center">
+      <span class="success">{{message}}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-11 offset-md-1 text-left">
+      <app-table-search (searchTexChangedEvent)="updateFilter($event)"
+                        placeholderText="Search by allergy name"></app-table-search>
+      <!--<input mdbInput
+     type="text"
+     placeholder="Search by allergy name"
+     class="form-control textfield"
+     (keyup)="updateFilter($event)"
+   />-->
+    </div>
+ </div>
+  <div class="row">
+  <div class="col-md-10 offset-md-1 me-md-1">
+    <ngx-datatable #allergyTable class='bootstrap card-blueshadow' [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"    
+            [rows]='allergies' [count]="totalCount" [limit]="dataParams.page_size">    
+            <ngx-datatable-column [width] ="50" name="Name" prop="name"></ngx-datatable-column> 
+            <ngx-datatable-column [width] ="50" name="Type" prop="type"></ngx-datatable-column>  
+            <ngx-datatable-column name="Source" prop="source"></ngx-datatable-column>    
+            <ngx-datatable-column name="Partial Sequences" prop="partialsequences"></ngx-datatable-column>    
+            <ngx-datatable-column name="Allerginicity" prop="allerginicity"></ngx-datatable-column>
+            <ngx-datatable-column [width] ="10" name="" prop="allergyid" [sortable]="false">
+              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                <a (click)="openPopUp(value)" tooltip="Edit" class="view-link">
+                  <i class="fas fa-pencil-alt" title="Edit Details"></i>
+                </a>
+              </ng-template>
+            </ngx-datatable-column>   
+        </ngx-datatable> 
+  </div>
+</div>  
+    
+
+

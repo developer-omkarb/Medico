@@ -1,0 +1,91 @@
+<div class="backdrop">
+  <div class="allergyModal">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
+          <span class="cardHeading">Allergy Details</span>
+        </div>
+        <form [formGroup]="allergyForm" (ngSubmit)="saveAllergyDetails()">
+          <div class="row">
+            <div class="col">
+                <div class="form-group md-form">
+                  <label for="name">Allergy Name</label>
+                    <input mdbInput name="name" type="text" formControlName="name" class="form-control textfield">
+                    <div #nameerrors *ngIf="name.touched && name.invalid" class="erroriconwrapper text-right">
+                      <erroricon (click)="showPopover($event,nameerrors)"></erroricon>
+                      <div class="errPopover">
+                          <p class="text-danger inputfieldwarnings" *ngIf="name.hasError('required')">- Enter allergy name.</p>
+                      </div>
+                  </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="form-group md-form">
+                  <label for="type">Type</label>
+                    <input mdbInput type="text" name="type" formControlName="type" class="form-control textfield">
+                    <div #typerrors *ngIf="type.touched && type.invalid" class="erroriconwrapper text-right">
+                      <erroricon (click)="showPopover($event,typerrors)"></erroricon>
+                      <div class="errPopover">
+                          <p class="text-danger inputfieldwarnings" *ngIf="type.hasError('required')">- Enter allergy type.</p>
+                      </div>
+                  </div>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="md-form mb-4">
+                  <label for="source">Source</label>
+                    <input mdbInput type="text" name="source" formControlName="source"
+                      class="form-control textfield">
+                      <div #sourcerrors *ngIf="source.touched && source.invalid" class="erroriconwrapper text-right">
+                        <erroricon (click)="showPopover($event,sourcerrors)"></erroricon>
+                        <div class="errPopover">
+                            <p class="text-danger inputfieldwarnings" *ngIf="source.hasError('required')">- Enter allergy source.</p>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="md-form mb-4">
+                  <label for="partialsequences">Partial Sequences</label>
+                    <input mdbInput type="text" name="partialsequences" formControlName="partialsequences"
+                      class="form-control textfield">
+                      <div #partialsequenceserrors *ngIf="partialsequences.touched && partialsequences.invalid" class="erroriconwrapper text-right">
+                        <erroricon (click)="showPopover($event,partialsequenceserrors)"></erroricon>
+                        <div class="errPopover">
+                            <p class="text-danger inputfieldwarnings" *ngIf="partialsequences.hasError('required')">- Enter allergy partial sequences.</p>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col">
+            <div class="md-form mb-4">
+              <label for="allerginicity">Allerginicity</label>
+                <input mdbInput type="text" name="allerginicity" formControlName="allerginicity"
+                  class="form-control textfield">
+                  <div #allerginicityerrors *ngIf="allerginicity.touched && allerginicity.invalid" class="erroriconwrapper text-right">
+                    <erroricon (click)="showPopover($event,allerginicityerrors)"></erroricon>
+                    <div class="errPopover">
+                        <p class="text-danger inputfieldwarnings" *ngIf="allerginicity.hasError('required')">- Enter allerginicity.</p>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+    <div class="row">
+      <div class="col text-center">
+        <button type="submit" class="btn btn-success rounded mr-1" [disabled]="!allergyForm.valid">Save</button>
+    <button class="btn btn-warning rounded" (click)="closePopUp()">Cancel</button>
+      </div>
+    </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

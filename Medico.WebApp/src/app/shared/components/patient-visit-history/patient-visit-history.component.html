@@ -1,0 +1,81 @@
+<ngx-datatable #apptTable class='bootstrap card-blueshadow expandable' style="border: 1px solid black;"
+               [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"
+               [rows]='appointments' [scrollbarH]="true" [limit]="table_page_size" (page)="onPage($event)">
+  <ngx-datatable-row-detail [rowHeight]="'auto'" #myDetailRow (toggle)="onDetailToggle($event)">
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+
+      <div class="row detailsRow nopadding">
+        <div class="col-md-4">
+          <div class="text-left">
+            <h6 class="header-primary bold">Diagnosis</h6>
+            <ul class="w-responsive">
+              <li *ngFor="let dg of row.patientDiagnosis">
+                {{dg.diagnosis.code}}, {{dg.diagnosis.description}}
+              </li>
+            </ul>
+            <br />
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="text-left">
+            <h6 class="header-primary bold">Procedures</h6>
+            <ul class="w-responsive">
+              <li *ngFor="let pr of row.patientPrcedureDetails">
+                {{pr.procedure.code}}, {{pr.procedure.approach}}
+              </li>
+            </ul>
+            <br />
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="text-left">
+            <h6 class="header-primary bold">Medication</h6>
+            <ul class="w-responsive">
+              <span *ngFor="let pres of row.patientPrescription">
+
+              <li *ngFor="let md of pres.medicinDetails">
+                {{md.medicin.drugname|titlecase}}, {{md.medicin.form|titlecase}}
+              </li>
+
+              </span>
+            </ul>
+            <br />
+          </div>
+
+        </div>
+      </div>
+
+    </ng-template>
+  </ngx-datatable-row-detail>
+  <ngx-datatable-column [width]="50"
+                        [resizeable]="false"
+                        [sortable]="false"
+                        [draggable]="false"
+                        [canAutoResize]="false">
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+      <a href="javascript:void(0)"
+         [class.datatable-icon-right]="!expanded"
+         [class.datatable-icon-down]="expanded"
+         title="Expand/Collapse Row"
+         (click)="toggleExpandRow(row)">
+      </a>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Title" [width]="25" prop="title"></ngx-datatable-column>
+  <ngx-datatable-column name="Description" [width]="30" prop="description"></ngx-datatable-column>
+  <ngx-datatable-column name="Physician" [width]="20" prop="physicianName" [sortable]="false">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        Dr. {{row.physician.user[0].person.firstname}} {{row.physician.user[0].person.lastname}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column [width]="20">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Visited On
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <strong> {{row.apptdate|date}} {{row.timeslot.value}}</strong>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

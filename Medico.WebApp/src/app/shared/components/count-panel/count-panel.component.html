@@ -1,0 +1,16 @@
+<div class="flex-container">
+  <div class="flex-item-left" *ngFor="let card of countArray">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{{card.imgUrl}}" class="icon" />
+        </div>
+        <div class="col-md-8">
+          <p class="imp_info text-center">{{card.heading}}</p>
+          <p class="text-center imp_info_text">{{card.count}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

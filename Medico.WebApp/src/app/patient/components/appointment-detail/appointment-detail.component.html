@@ -1,0 +1,54 @@
+<app-navbar [sidemenu_items]="sidemenu_items" (toogleNotifiationTab)="ontoogleNotifiationTab($event)" [noOfNotifications]="noOfNotifications"></app-navbar>
+<div id="mySidebar" class="sidebar">
+  <app-notification-sidetab (notificaionCountEvent)="notificaionCountEvent($event)"></app-notification-sidetab>
+</div>
+<router-outlet></router-outlet>
+<app-view-patient-visit-history (closeEvent)="ClosePopUp($event)" *ngIf="showVisitHistory" [patientId]="patientId" [patientName]="patientName"></app-view-patient-visit-history>
+<div class="row mt-2">
+  <div class="col-md-5 offset-md-1 text-left">
+    <a class="text-primary bold" href="{{backUrl}}"><i class="fas fa-arrow-left fa-2x icon-primary" title="Go Back"></i></a>
+  </div>
+    <div class="col-md-5 me-md-1 text-right">
+      <Button type="button" class="btn btn-primary" (click)="viewVisitHistory()">{{btnHistoryText}}</Button>
+    </div>
+  </div>
+  <div class="col-md-12 shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header text-primary">
+                <h6>Appointment Details</h6>
+              </div>
+              <div class="card-body">
+                <app-view-patient-info [appointment]="appointmentDetails"></app-view-patient-info>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <accordion [isAnimated]="true">
+              <accordion-group heading="Vital Signs" [isOpen]="true" *ngIf="(appointmentDetails.patientVisitDetails.length)!=0">
+                <app-vital-signs-details [appointment]="appointmentDetails"></app-vital-signs-details>
+              </accordion-group>
+              <accordion-group heading="Diagnosis Details" [isOpen]="true" *ngIf="(appointmentDetails.patientDiagnosis.length)!=0">
+                <app-diagnosis-details [appointment]="appointmentDetails"></app-diagnosis-details>
+              </accordion-group>
+              <accordion-group heading="Procedure Details" [isOpen]="true" *ngIf="(appointmentDetails.patientProcedureDetails.length)!=0">
+                <app-procedures [appointment]="appointmentDetails"></app-procedures>
+              </accordion-group>
+              <accordion-group heading="Prescriptions" [isOpen]="true" *ngIf="(appointmentDetails.patientPrescription.length)!=0">
+                <app-prescriptions [appointment]="appointmentDetails"></app-prescriptions>
+                </accordion-group>
+            </accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

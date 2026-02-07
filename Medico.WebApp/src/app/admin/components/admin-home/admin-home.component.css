@@ -1,0 +1,9 @@
+.padding-top-10px {
+  padding-top: 1%;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  border-radius: .7em;
+}

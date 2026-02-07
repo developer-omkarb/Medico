@@ -1,0 +1,19 @@
+div.erroriconwrapper {
+    margin-top: -7vh;
+}
+
+div.selecterroriconwrapper {
+    margin-top: -5vh;
+}
+
+
+div.contactNoerroriconwrapper {
+    margin-top: -5vh;
+}
+
+
+.address{
+    color: rgb(0, 153, 255);
+     font-size: smaller;
+      font-weight: bold;
+}

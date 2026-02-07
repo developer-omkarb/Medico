@@ -1,0 +1,32 @@
+.icon{
+    width: 125%;
+    float: right;
+}
+.bg-blue{
+    background-color: #78d2fa36;
+}
+.imp_info{
+    font-weight: bold;
+    font-size: small;
+    color: black;
+}
+.imp_info_text{
+    font-weight: bold;
+    color: rgb(0 90 158);
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    border-radius: .7em;
+}
+
+.flex-item-left{
+    flex: 50%;
+    border-left: 14px solid gainsboro;
+}
+
+.flex-item-left info{
+    font-size: 20px;
+}

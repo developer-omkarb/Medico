@@ -1,0 +1,12 @@
+<div class="sidebar_menu">
+    <div class="menu">
+        <ul *ngFor="let item of sidemenu_items">
+            <li *ngIf="item.click==''">
+                <a routerLink="{{item.link}}"><i class="{{item.icon_class}}"></i> {{item.itemname}}</a>
+            </li>
+            <li *ngIf="item.click!=''">
+                <a (click)="logOut()"><i class="{{item.icon_class}}"></i> {{item.itemname}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

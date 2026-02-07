@@ -1,0 +1,61 @@
+<div class="backdrop">
+    <div class="diagnosisModal">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center">
+            <span class="cardHeading">Diagnosis Details</span>
+          </div>
+          <form [formGroup]="diagnosisForm" (ngSubmit)="saveDiagnosisDetails()">
+            <div class="row">
+              <div class="col">
+                  <div class="form-group md-form">
+                    <label for="name">Diagnosis Code</label>
+                      <input mdbInput name="code" type="text" formControlName="code" class="form-control textfield">
+                      <div #codeerrors *ngIf="code.touched && code.invalid" class="erroriconwrapper text-right">
+                        <erroricon (click)="showPopover($event,codeerrors)"></erroricon>
+                        <div class="errPopover">
+                            <p class="text-danger inputfieldwarnings" *ngIf="code.hasError('required')">- Enter diagnosis code.</p>
+                        </div>
+                    </div>
+                    </div>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col">
+                  <div class="form-group md-form">
+                    <label for="type">Description</label>
+                    <textarea type="text" name="description" class="md-textarea form-control textfield" formControlName="description" mdbInput></textarea>
+                      <div #descriptionerrors *ngIf="description.touched && description.invalid" class="erroriconwrapper text-right">
+                        <erroricon (click)="showPopover($event,descriptionerrors)"></erroricon>
+                        <div class="errPopover">
+                            <p class="text-danger inputfieldwarnings" *ngIf="description.hasError('required')">- Enter description.</p>
+                        </div>
+                    </div>
+                    </div>
+              </div>
+          </div>
+          
+      <div class="row" *ngIf="!isAddMode">
+        <div class="col">
+            <div class="form-check text-left">
+                <input class="form-check-input" type="checkbox" name="depracted" formControlName="isDeprecated">
+                <label class="form-check-label labelColor" for="depracted">
+                  Deprecate
+                </label>
+              </div>
+                
+              </div>
+        </div>
+      <div class="row">
+        <div class="col text-center">
+          <button type="submit" class="btn btn-success rounded mr-1" [disabled]="!diagnosisForm.valid">Save</button>
+      <button class="btn btn-warning rounded" (click)="closePopUp()">Cancel</button>
+        </div>
+      </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

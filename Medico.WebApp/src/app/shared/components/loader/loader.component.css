@@ -1,0 +1,9 @@
+.loaderDiv{
+    z-index: 1200;margin-top: -45vh;margin-left: 45vw;
+}
+.spinner-loc{
+    z-index: 1200;
+}
+.myspinner{
+    width: 2rem; height: 2rem;
+}

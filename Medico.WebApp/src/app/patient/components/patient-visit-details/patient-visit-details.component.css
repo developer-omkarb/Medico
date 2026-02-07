@@ -1,0 +1,11 @@
+.card-blueshadow {
+    border: solid 2px #38b4ed65;
+    border-radius: 5px;
+    box-shadow: 0 15px 35px #38b4ed65, 0 5px 15px rgba(0, 0, 0, .07);
+    padding: 0;
+}
+.detailsRow {
+  width: 100%;
+  padding: 0 !important;
+  margin: 0;
+}

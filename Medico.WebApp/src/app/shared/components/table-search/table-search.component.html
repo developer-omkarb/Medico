@@ -1,0 +1,4 @@
+    <div class="col-md-7 search-shell">
+        <img src="../../../../assets/images/search.jpg" class="search-img">
+        <input (input)="searchedTextValue=$event.target.value"  type="text" class="searchtxtbox" [placeholder]="placeholderText" (keyup)="EmitSearchEvent()">
+    </div>

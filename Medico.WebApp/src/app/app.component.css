@@ -1,0 +1,36 @@
+.bg-style {
+  background-color: #d3d3d352;
+}
+
+.content-display {
+  height: auto;
+  width: 100%;
+}
+
+.contentHolder {
+  margin-bottom: 3rem;
+}
+
+div {
+  font-family: "Raleway", serif;
+}
+/*#footer{
+    position:fixed;
+    bottom:0;
+}*/
+
+
+/* ------------------for footer to stay down---------------------- */
+.myFooter {
+  bottom: 0px; /* you can delete these two lines if you want the position as it is */
+  position: fixed;
+  margin-bottom: -4px;
+  width: 100%;
+}
+
+@media screen and (min-width:500px) {
+  .myFooter {
+    bottom: 0px;
+  }
+}
+/* -------------------for footer to stay down ---------------------*/

@@ -1,0 +1,122 @@
+
+
+select.textfield {
+  border: solid;
+  border-radius: 0;
+  border-color: #38B5ED;
+  position: relative;
+  padding: 12px 0px 5px 0;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 0.7px 0 0 #ced4da;
+  transition: box-shadow 150ms ease-out;
+}
+
+  select.textfield:focus {
+    border: solid;
+    border-color: #38B5ED;
+    position: relative;
+    padding: 12px 0px 5px 0;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 2px 0 0 #007bff;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  select.textfield::placeholder {
+    opacity: 0.4;
+  }
+
+  select.textfield.ng-touched.ng-invalid {
+    box-shadow: 0 1.5px 0 0 red;
+
+  }
+
+  select.textfield.ng-touched.ng-valid {
+    box-shadow: 0 1.5px 0 0 greenyellow;
+
+  }
+  input.textfield {
+  border: solid;
+  border-color: #38B5ED;
+  position: relative;
+  padding: 12px 0px 5px 0;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 1px 0 0 #e5e5e5;
+  transition: box-shadow 150ms ease-out;
+}
+
+  input.textfield:focus {
+    border: solid;
+    border-color: #38B5ED;
+    position: relative;
+    padding: 12px 0px 5px 0;
+    /*width: 100%;*/
+    outline: 0;
+    border: 0;
+    box-shadow: 0 1px 0 0 #e5e5e5;
+    transition: box-shadow 150ms ease-out;
+  }
+
+  input.textfield::placeholder {
+    opacity: 0.4;
+  }
+
+  input.textfield.ng-touched.ng-invalid {
+    border-bottom: 1.5px red solid;
+  }
+
+  input.textfield.ng-touched.ng-valid {
+    border-bottom: 1.5px greenyellow solid;
+  }
+button[type='submit'] {
+  height: 30px;
+      width: 100px;
+}
+.labeltransform {
+  color: #007bff;
+  transform: translateY(-150%);
+  font-size: .75em;
+}
+label {
+  color: #757575;
+  position: relative;
+  top: 45px;
+  transition: transform 250ms ease-out, font-size 250ms ease-out;
+  z-index: 1;
+}
+
+.md-form label.active {
+  color: #007bff;
+}
+
+
+button[type='submit']:hover {
+  border: solid;
+  border-color: #075319;
+  transform: scale(1.1,1.1);
+}
+
+button[type='submit']:focus {
+  border: solid;
+  border-color: #38B5ED;
+  background: white;
+  color: #38B5ED;
+  height: 35px;
+  padding: 2px;
+}
+p.inputfieldwarnings {
+  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman'; */
+  /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ### ; */
+  /* font-family: 'Times New Roman', Times, serif; ### */
+  /* font-family: Arial, Helvetica, sans-serif; -- straigh arial font */
+  /* font-family: Georgia, 'Times New Roman', Times, serif;  --cute font for showing info  */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  font-size: small;
+}
+

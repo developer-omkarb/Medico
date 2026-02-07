@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-md-10 offset-md-1 me-md-1">
+      <ngx-datatable #procTable class='bootstrap' [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"    
+              [rows]='appointment.patientProcedureDetails' [count]="totalCount" [limit]="dataParams.page_size">    
+              <ngx-datatable-column name="Code" prop="procedure.code"></ngx-datatable-column> 
+              <ngx-datatable-column name="Approach" prop="procedure.approach"></ngx-datatable-column> 
+              <ngx-datatable-column name="Note" prop="procedurenote"></ngx-datatable-column>  
+          </ngx-datatable> 
+    </div>
+  </div>

@@ -1,0 +1,131 @@
+<div class="row p-5 nopadding">
+    <div class="card col-md-12 card-blueshadow">
+        <div class="text-center">
+            <span class="cardHeading">Vital Signs</span>
+        </div>
+        <form [formGroup]="VitalSignsForm">
+            <div class="row-cols-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group md-form">
+                            <label for="">Height <sup>in cm</sup></label>
+                            <input formControlName="height" mdbInput type="number" class="form-control textfield" id="height">
+                            <div #heighterrors *ngIf="height.touched && height.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,heighterrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="height.hasError('required')">- Enter Height.</p>
+                                    <p class="text-danger inputfieldwarnings" *ngIf="height.hasError('max')">- Please enter height under 250cm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="md-form form-group">
+                            <label>Weight <sup>in kg</sup> </label>
+                            <input mdbInput type="number" formControlName="weight" class="form-control textfield">
+                            <div #weighterrors *ngIf="weight.touched && weight.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,weighterrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="weight.hasError('required')">- Enter weight.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="md-form form-group">
+                            <label for="bodyTemperature">Body Temperature <sup>in &deg;F </sup></label>
+                            <input mdbInput type="number" formControlName="bodyTemperature" class="form-control textfield">
+                            <div #bodyTemperatureerrors *ngIf="bodyTemperature.touched && bodyTemperature.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,bodyTemperatureerrors)"></erroricon>
+
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="bodyTemperature.hasError('required')">
+                                        - Enter Body Temperature.</p>
+                                    <p class="text-danger inputfieldwarnings" *ngIf="bodyTemperature.hasError('max')">- Enter Body Temperature below 109&deg;F</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="md-form form-group">
+                            <label>Blood Pressure <sup>sys</sup></label>
+                            <input mdbInput formControlName="bloodPressuresys" type="number" class="form-control textfield">
+
+                            <div #bloodpressuresyserrors *ngIf="bloodPressuresys.touched && bloodPressuresys.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,bloodpressuresyserrors)"></erroricon>
+
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="bloodPressuresys.hasError('required')">- Enter Systolic Blood Pressure.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group md-form">
+                            <label>Blood Pressure <sup>dia</sup></label>
+                            <input mdbInput formControlName="bloodPressuredia" type="number" class="form-control textfield">
+                            <div #bloodpressurdiaeerrors *ngIf="bloodPressuredia.touched && bloodPressuredia.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,bloodpressurdiaeerrors)"></erroricon>
+
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="bloodPressuredia.hasError('required')">- Enter Diastolic Blood Pressure.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="md-form form-group">
+                            <label for="respirationRate">Respiration Rate</label>
+                            <input mdbInput type="number" formControlName="respirationRate" class="form-control textfield" id="respirationRate">
+                            <div #respirationRateerrors *ngIf="respirationRate.touched && respirationRate.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,respirationRateerrors)"></erroricon>
+
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="respirationRate.hasError('required')">- Enter Respiration Rate.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="md-form form-group">
+                            <textarea id="vitalDescription" formControlName="vitalDescription" mdbInput class="md-textarea form-control textfield" rows="1"></textarea>
+                            <div #vitalDescriptionErrors *ngIf="vitalDescription.touched && vitalDescription.invalid" class="erroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,vitalDescriptionErrors)"></erroricon>
+                            </div>
+                            <label for="vitalDescription">Description</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" (click)="saveVitalSignDetails($event)" class="btn btn-success offset-md-5" [disabled]="!VitalSignsForm.valid || !VitalSignsForm.dirty" value="Submit" #saveButton>Save</button> &nbsp; &nbsp;
+                <button type="reset" class="btn btn-danger" [disabled]="!VitalSignsForm.dirty && !VitalSignsForm.valid" (click)="VitalSignsForm.reset" value="Reset" #resetButton>Reset</button>
+                <br>
+                <br>
+            </div>
+        </form>
+    </div>
+
+</div>
+<ng-template #popup>
+    <div class="modal-body">
+        <div>
+            <h6>Do you want to proceed without saving Visit Details? </h6>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="hidePopup()">
+                OK
+            </button>
+            <br>
+        </div>
+    </div>
+</ng-template>

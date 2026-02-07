@@ -1,0 +1,61 @@
+<div class="row">
+   <div class="col-md-12 shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <a (click)="downloadPRescription()" class="greenLink">
+          <i class="fas fa-download"></i>
+          Download
+        </a>
+      </div>
+    </div>
+    <div class="row outer-border" id="contentToConvert">
+      <div class="col-md-12 space">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h4 class="pTitle">Medico</h4>
+            <hr />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <app-view-patient-info [appointment]="appointmentDetails"></app-view-patient-info>
+            <hr />
+            <div class="row">
+              <div class="col-md-12">
+                <ngx-datatable #diagnosisTable class='bootstrap' [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"    
+              [rows]='prescription.medicinDetails' [count]="totalCount" [limit]="dataParams.page_size">    
+              <ngx-datatable-column name="Drug" prop="medicin.drugname"></ngx-datatable-column> 
+              <ngx-datatable-column name="Dose(s)" prop="dosagedetails"></ngx-datatable-column>
+              <ngx-datatable-column name="Form" prop="medicin.form"></ngx-datatable-column>
+              <ngx-datatable-column name="Note" prop="prescriptionnote"></ngx-datatable-column>
+          </ngx-datatable> 
+                <!-- <table class="table-responsive">
+                  <tr>
+                    <th width="30%">
+                      <strong>Medicine Name</strong>
+                    </th>
+                    <th width="20%">
+                      <strong>Dose(s)</strong>
+                    </th>
+                    <th width="20%">
+                      <strong>Form</strong>
+                    </th>
+                    <th width="20%">
+                      <strong>Note</strong>
+                    </th>
+                  </tr>
+                  <tr *ngFor="let pr of prescription.medicinDetails">
+                    <td>{{pr.medicin.drugname |titlecase}}</td>
+                    <td>{{pr.dosagedetails|titlecase}}</td>
+                    <td>{{pr.medicin.form|titlecase}}</td>
+                    <td>{{pr.prescriptionnote|titlecase}}</td>
+                  </tr>
+                </table> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>

@@ -1,0 +1,14 @@
+<ng-template [ngIf]="loader.showHideSpinner">
+    <div id="loaderDiv" class="position-fixed loaderDiv" >
+        <div [hidden]="showHideSpinner"  class="clearfix spinner-loc">
+
+            <span *ngFor="let val of counter">
+                <div class="myspinner spinner-grow text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>&nbsp;
+            </span>
+        </div>
+    </div>
+    <mdb-modal-backdrop>
+    </mdb-modal-backdrop>
+</ng-template>

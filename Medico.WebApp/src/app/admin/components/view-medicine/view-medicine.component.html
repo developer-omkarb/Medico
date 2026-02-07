@@ -1,0 +1,73 @@
+<div class="row padding-top-10px">
+  <div class="col-md-10 offset-md-1 me-md-1 text-center headMargin">
+    <span class="cardHeading">Medicines List</span>
+    <div class="float-right">
+      <a class="addLink" (click)="openPopUp(0)">
+        <i class="fas fa-plus-circle fa-3x" title="Add Medicines"></i>
+        <!-- <img class="img-responsive addImg" mdbTooltip="Add Medicine" src="./assets/images/addrecord.png"/> -->
+      </a>
+      <app-add-medicine [medicine]="selectedMedicine" (onCloseEvent)="closePopUp($event)" *ngIf="showPopUp"></app-add-medicine>
+    </div>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-1 text-left">
+        <app-table-search (searchTexChangedEvent)="updateFilter($event)"
+                          placeholderText="Search by drug id and name"></app-table-search>
+        <!--<input mdbInput
+        type="text"
+        placeholder="Search by drug name"
+        class="form-control textfield"
+        (keyup)="updateFilter($event)"
+      />-->
+      </div>
+       <div class="col-md-2 me-md-1 text-right">
+        <div class="deprecated-checkbox">
+          <input type="checkbox" name="isdeprecated" (change)="FilterByStatus($event)">
+        <label for="isdeprecated">Show deprecated</label>
+        </div>
+       </div>
+    </div>
+    <div class="row">
+    <div class="col-md-10 offset-md-1 me-md-1">
+      <ngx-datatable #medicineTable class='bootstrap card-blueshadow' [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"    
+              [rows]='medicines' [count]="totalCount" [limit]="dataParams.page_size">    
+              <ngx-datatable-column [width] ="100"  name="App No." prop="appno"></ngx-datatable-column> 
+              <ngx-datatable-column  [width] ="150"name="Medicine No." prop="medicinnumber"></ngx-datatable-column>  
+              <ngx-datatable-column [width]="250" name="Form" prop="form">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  {{value|titlecase}}
+                </ng-template>
+              </ngx-datatable-column>  
+              <ngx-datatable-column name="Strength" prop="strength"></ngx-datatable-column>
+              <ngx-datatable-column  name="Reference Drug" prop="referencedrug"></ngx-datatable-column> 
+              <ngx-datatable-column name="Drug Name" prop="drugname">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  {{value|titlecase}}
+                </ng-template>
+              </ngx-datatable-column>     
+              <ngx-datatable-column [width]="200" name="Active Ingredient" prop="activeingredient">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  {{value|titlecase}}
+                </ng-template>
+              </ngx-datatable-column>  
+              <ngx-datatable-column  [width] ="120"name="Relevance" prop="isDeprecated" [canAutoResize]="true">
+                <ng-template let-row="row" class="text-center" let-value="value" ngx-datatable-cell-template>
+                  <span class="text-success" *ngIf="value==false">Active</span>
+                  <span class="text-danger" *ngIf="value==true">Deprecated</span>
+                </ng-template>
+            </ngx-datatable-column>
+              <ngx-datatable-column [width] ="100" name="" prop="medicinid" [sortable]="false">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <a (click)="openPopUp(value)" tooltip="Edit" class="view-link">
+                    <i class="fas fa-pencil-alt"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>   
+          </ngx-datatable> 
+    </div>
+  </div>  
+      
+  
+  

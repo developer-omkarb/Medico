@@ -1,0 +1,21 @@
+.details-tab {
+  background-color: aliceblue;
+  padding-left: 8%;
+  border-style: solid;
+  border-color: #80808069;
+  padding-right: 8%;
+  height: 40vh;
+}
+
+
+.sidebar {
+  height: 90.5vh;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  background-color:   rgba(83, 98, 114, 0.30);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+

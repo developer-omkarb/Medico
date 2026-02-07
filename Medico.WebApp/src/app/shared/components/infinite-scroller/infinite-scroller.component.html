@@ -1,0 +1,9 @@
+<mat-list class="content" 
+    infinite-scroll 
+    (scrolled)="onScrollDown($event)" 
+    (scrolledUp)="onScrollUp($event)">
+    <section *ngFor="let phyInfo of phyInfoData">
+      <app-doctor-search-card [phyInfo] = "phyInfo" [searchDateVal]="searchDate"></app-doctor-search-card>
+      <!-- <mat-divider></mat-divider> -->
+    </section>
+</mat-list>

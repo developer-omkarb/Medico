@@ -1,0 +1,12 @@
+<div class="m-2 h3-primary">
+  <h5>{{tableHeaderText}}</h5>
+  <div *ngIf="allowSearch">
+    <div class="row">
+      <div class="col-md-8"><app-table-search  (searchTexChangedEvent) = "searchTextChanged($event)" placeholderText="Search By Appointment Title, Physician..."></app-table-search></div>
+      <div class="col-md-4 mt-3"><app-status-colors></app-status-colors></div>
+    </div>
+  </div>
+  <div class="m-1">
+      <app-edit-appointment-table [searchedText]="searchText"></app-edit-appointment-table>
+  </div>
+</div>

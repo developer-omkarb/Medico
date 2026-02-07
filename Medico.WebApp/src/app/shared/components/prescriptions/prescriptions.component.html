@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-10 offset-md-1 me-md-1">
+      <ngx-datatable #medTable class='bootstrap' [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"    
+              [rows]='appointment.patientPrescription' [count]="totalCount" [limit]="dataParams.page_size">    
+              <ngx-datatable-column name="Id" prop="patientprescriptionid"></ngx-datatable-column> 
+              <ngx-datatable-column name="Created On" prop="createddate" [sortable]="false">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  {{value|date}}
+                </ng-template>
+                </ngx-datatable-column>
+              <ngx-datatable-column name="Action" prop="patientprescriptionid" [sortable]="false">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <a (click)="redirectToPrescription(value)" tooltip="Edit" class="view-link">
+                    <i class="fa-eye icon-size far" title="View Prescription"></i>
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>   
+          </ngx-datatable> 
+      <!-- <table class="table-responsive prescription-tb" mdbTable>
+        <tr>
+          <th width="30%">
+            <strong>Created on</strong>
+          </th>
+          <th width="40%">
+            <strong>Medicines</strong>
+          </th>
+          <th width="30%">
+
+          </th>
+        </tr>
+        <tr *ngFor="let pr of prescriptions">
+        
+          <td class="col-style">
+            {{pr.createddate}}
+          </td>
+          <td class="col-style">{{pr.allmedicine}}</td>
+          <td class="col-style">
+            <a [routerLink]="['/patient/view-prescription',pr.patientprescriptionid]" class="view-link" tooltip="View Details">
+              <mdb-icon far icon="eye"></mdb-icon>
+            </a>
+          </td>
+        </tr>
+      </table> -->
+    </div>
+  </div>

@@ -1,0 +1,7 @@
+    <app-navbar [sidemenu_items]="sidemenu_items" (toogleNotifiationTab)="ontoogleNotifiationTab($event)" [noOfNotifications]="noOfNotifications"></app-navbar>
+    
+    <div id="mySidebar" class="sidebar">
+        <app-notification-sidetab (notificaionCountEvent)="notificaionCountEvent($event)"></app-notification-sidetab>
+    </div>
+      
+    <router-outlet></router-outlet>

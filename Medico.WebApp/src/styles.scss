@@ -1,0 +1,405 @@
+// Declarations start
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/bootstrap.css';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+@import "~angular-calendar/css/angular-calendar.css";
+@font-face {
+    font-family: 'Raleway';
+    src: url('./assets/fonts/Raleway-Light.ttf') format('truetype')
+}
+
+//For any theme related colour--- our theme follows *$info-color* //
+$primary-color: #4285f4 !default;
+$primary-color-dark: #0d47a1 !default;
+$secondary-color: #aa66cc !default;
+$secondary-color-dark: #9933cc !default;
+$default-color: #2bbbad !default;
+$default-color-dark: #00695c !default;
+$info-color: #33b5e5 !default;
+$info-color-dark: #0099cc !default;
+$success-color: #00c851 !default;
+$success-color-dark: #007e33 !default;
+$warning-color: #ffbb33 !default;
+$warning-color-dark: #ff8800 !default;
+$danger-color: #ff3547 !default;
+$danger-color-dark: #cc0000 !default;
+// Declarations Ends
+.btn {
+    padding: .4rem 1.5rem !important;
+    font-size: .9rem !important;
+    text-transform: unset !important
+}
+
+.cardHeading {
+    font-size: x-large;
+}
+
+.card-blueshadow {
+    border: solid 2px #38b4ed65 !important;
+    border-radius: 5px !important;
+    box-shadow: 0 15px 35px #38b4ed65, 0 5px 15px rgba(0, 0, 0, 0) !important;
+}
+
+html,
+body,
+div {
+    font-family: "Raleway", serif;
+}
+
+div.selecterroriconwrapper {
+    margin-top: -5vh;
+}
+
+select.textfield {
+    border: solid;
+    border-radius: 0;
+    border-color: #38B5ED;
+    position: relative;
+    padding: 12px 0px 5px 0;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 0.7px 0 0 #ced4da;
+    transition: box-shadow 150ms ease-out;
+}
+
+select.textfield:focus {
+    border: solid;
+    border-color: #38B5ED;
+    position: relative;
+    padding: 12px 0px 5px 0;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 2px 0 0 #007bff;
+    transition: box-shadow 150ms ease-out;
+}
+
+select.textfield::placeholder {
+    opacity: 0.4;
+}
+
+select.textfield.ng-touched.ng-invalid {
+    box-shadow: 0 1.5px 0 0 red;
+}
+
+select.textfield.ng-touched.ng-valid {
+    box-shadow: 0 1.5px 0 0 greenyellow;
+}
+
+input.textfield.ng-touched.ng-invalid {
+    border-bottom: 1.5px red solid;
+}
+
+input.textfield.ng-touched.ng-valid {
+    border-bottom: 1.5px greenyellow solid;
+}
+
+textarea.textfield.ng-touched.ng-invalid {
+    border-bottom: 1.5px red solid;
+}
+
+textarea.textfield.ng-touched.ng-valid {
+    border-bottom: 1.5px greenyellow solid;
+}
+
+p.inputfieldwarnings {
+    font-size: smaller;
+    font-weight: bold;
+    font-family: "Raleway", sans-serif;
+}
+
+a:hover {
+    font-weight: bolder;
+}
+
+.topMarginContent {
+    margin-top: 10vh !important;
+}
+
+// FOR ERROR ICON START
+div.erroriconwrapper {
+    margin-top: -7vh;
+    width: 30px;
+    float: right;
+}
+
+div.errPopover {
+    display: none;
+}
+
+// FOR ERROR ICON END
+
+/* JASMILE START */
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.mt-5 {
+    margin-top: -5vh;
+}
+
+.fb {
+    font-weight: bold;
+}
+
+.greenLink {
+    color: #09e5ab;
+    font-weight: bold;
+    margin-right: 1%;
+}
+
+.pTitle {
+    font-size: 150%;
+    font-weight: bold;
+    color: #38B5ED;
+    PADDING-BOTTOM: 2PX;
+    cursor: pointer;
+    background-color: #dce2ff;
+    border-radius: 1em;
+    padding: 0px 23px;
+    text-decoration-line: overline;
+}
+
+.nav-link {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #38b5ed;
+    cursor: pointer;
+}
+
+.pTitle:hover {
+    color: #186d94;
+}
+
+.btn-info:hover {
+    font-weight: bold;
+}
+
+p,
+a,
+b,
+strong,
+i,
+em,
+embed,
+mark,
+del,
+ins {
+    font-size: small;
+}
+
+.med-card {
+    border: 1px solid #14bef0;
+    border-radius: 3px;
+    padding: 5px 0;
+    margin: 4px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px #00000029, 0 2px 10px #0000001f;
+    background-image: linear-gradient(to right top, #d16ba5, #c279c1, #aa89d8, #8c98e8, #69a6ef, #50b2f4, #36bdf6, #1fc8f4, #1ad5f6, #2be2f6, #44eff4, #5ffbf1);
+}
+
+.med-card:hover {
+    box-shadow: 0 2px 15px #00000029, 0 2px 15px #0000001f;
+}
+
+.med-black-shadow {
+    box-shadow: 0 2px 5px #00000029, 0 2px 10px #0000001f;
+}
+
+.med-black-shadow:hover {
+    box-shadow: 0 2px 15px #00000029, 0 2px 15px #0000001f;
+}
+
+// .h3-primary{
+//     background-color: #e7f3fe;
+//     border-left: 4px solid #33b5e5;
+//     margin-top: 10px;
+//     padding: 4px 12px;
+// }
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem 1rem !important;
+}
+
+.m-1 {
+    margin: 1%;
+}
+
+.m-2 {
+    margin: 2%;
+}
+
+.p-2 {
+    padding: 2%
+}
+
+.icon-size {
+    font-size: 13px;
+    padding: 0px 9%;
+}
+
+.icon-size:hover {
+    font-size: 14px;
+    color: #186d94 !important;
+}
+
+.error-img {
+    transform: scale(0.8);
+    width: 3.3vh;
+    height: 3vh;
+}
+
+.select-label {
+    z-index: 3 !important;
+}
+
+.header-primary {
+    background-color: #e7f3fe;
+    border-left: 4px solid #33b5e5;
+    margin-top: 10px;
+    padding: 4px 12px;
+    font-size: medium;
+}
+
+.header-info {
+    background-color: #e7f3fe;
+    border-left: 4px solid #33b5e5;
+    margin-top: 10px;
+    padding: 4px 12px;
+    font-size: medium;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0 !important;
+    height: 100% !important
+}
+.b-declined{
+    background-color: rgba(248, 7, 7, 0.5) !important;
+}
+.b-awaited{
+    background-color: rgba(33, 150, 243, 0.37) !important;
+}
+.b-confirmed{
+    background-color: rgba(7, 248, 47, 0.37) !important;
+}
+.b-visited{
+    background-color: rgba(59, 73, 223, 0.37) !important;
+}
+.b-cancelled{
+    background-color: rgb(255, 248, 197) !important;
+}
+.bold{
+    font-weight: bold !important;
+    border-bottom: 1px solid white !important;
+}
+
+
+/* POPUP CODE     */
+
+.backdrop {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.usermodal {
+    width: 80%;
+    position: absolute;
+    left: 25%;
+    z-index: 10;
+    top: 10%;
+}
+
+
+/* POPUP CODE     */
+
+
+/* JASMILE END */
+
+
+/* Importing Bootstrap SCSS file. */
+
+@import '~bootstrap/scss/bootstrap';
+.dropdowns {
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    margin-top: 0.4vh !important;
+}
+
+.dropdowns-datalist,
+.dropdowns-datalist:focus {
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    margin-top: 0.4vh !important;
+    box-shadow: none !important;
+}
+
+.dropdowns:focus {
+    box-shadow: 0 0.3vh 0 0 #007bff !important;
+}
+
+input::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+//OMKAR STARTS
+.icon-danger:hover {
+    color: $danger-color;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.icon-success:hover {
+    color: $success-color;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.icon-warning:hover {
+    color: $warning-color;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.icon-info:hover {
+    color: $info-color;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.icon-primary:hover {
+    color: $warning-color;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.activeLink {
+  color: #21ce84 !important;
+  font-weight: bold !important;
+  //font-size: large;
+}
+//OMKAR ENDS

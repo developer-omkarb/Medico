@@ -1,0 +1,36 @@
+.blue{
+    background-color: #2196f3 !important;
+    padding: 0.25rem !important;
+    font-weight: bold;
+    color: white;
+    border-radius: .2em;
+}
+.green{
+    background-color: #4caf50 !important;
+    padding: 0.25rem !important;
+    font-weight: bold;
+    color: white;
+    border-radius: .2em;
+}
+
+.yellow{
+    background-color: #ffeb3b !important;
+    padding: 0.25rem !important;
+    font-weight: bold;
+    color: white;
+    border-radius: .2em;
+}
+.red{
+    background-color: red !important;
+    padding: 0.25rem !important;
+    font-weight: bold;
+    color: white;
+    border-radius: .2em;
+}
+.sky-blue{
+    background-color: #5cc9ee !important;
+    padding: 0.25rem !important;
+    font-weight: bold;
+    color: white;
+    border-radius: .2em;
+}

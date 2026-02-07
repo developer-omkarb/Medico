@@ -1,0 +1,71 @@
+.u-bold{
+    font-weight: 700!important;
+}
+.m-10{
+    margin: 10px;;
+}
+.bg-green{
+    background-color: #00c851;
+    clear: white;
+    font-weight: bold;
+    border-radius: .4em;
+    font-family: Camphor,sans-serif;
+    padding: 0 .2em;
+}
+.p-tb-10p{
+    padding: 5% 0;
+}
+.profile-img-container{
+    max-width: 90px;
+    max-height: 90px;
+}
+
+.card-appointment-today{
+    position: relative;
+    height: 120px;
+    overflow-x: auto;
+    display: block;
+}
+.doc-profile-card{
+    height: 185px;
+}
+
+.timeslot{
+    padding: 4px;
+    letter-spacing: normal;
+}
+.timestotdata{
+    color: #14bef0;
+    border: 1px solid #14bef0;
+    width: 84px;
+    border-radius: 3px;
+    padding: 5px 0;
+    margin: 4px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px #00000029, 0 2px 10px #0000001f;
+}
+.timestotdata:hover{
+    box-shadow: 0 10px 15px #00000029, 0 8px 10px #0000001f;
+}
+.info {
+    background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;
+    margin-top: 10px;
+    padding: 4px 12px;
+  }
+.error-img {
+    transform: scale(0.8);
+    width: 3.3vh;
+    height: 3vh;
+}
+
+.card-header {
+    padding: 0.15rem 1.25rem;
+    
+    font-weight: bold !important;
+    margin-bottom: 0 !important;
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+}

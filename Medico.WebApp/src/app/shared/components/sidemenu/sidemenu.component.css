@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+.noPadding {
+  padding-left: 0;
+  padding-right: 0;
+}
+ li{
+     list-style: none;
+ }
+  .sidebar_menu{
+    border: solid 2px #38b4ed65;
+    box-shadow: 0 10px 25px #38b4ed65;
+    border-radius: .7em;
+    margin-left: -1%;
+    width: 100%;
+    }
+    .sidebar_menu .menu a {
+        padding: 8px 8px 8px 32px;
+        font-size: 16px;
+        color: #38b5ed;
+        display: block;
+        transition: 0.3s;
+        
+      }
+
+      .sidebar_menu .menu a:hover {
+        color: #38b5ed;
+        font-weight: bold;
+        font-size: 18px;
+        border-left: 1px solid #38b5ed;
+        box-shadow: 0 0 4px rgba(17, 17, 17, 0.5);
+      }
+     
+

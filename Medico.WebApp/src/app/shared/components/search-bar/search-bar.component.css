@@ -1,0 +1,32 @@
+input{
+    border: none;
+}
+.searchtxtbox{
+    width: 35vw;
+    height: 30px;
+    margin: 0.3em 0;
+    margin-left: 35px;
+}
+.search-shell{
+    margin: 6px 0;
+    background-color: white;
+    border-radius: 0.3em;
+}
+.search-img {
+    display: block;
+    height: 28px;
+    left: 2%;
+    position: absolute;
+    top: 6px;
+    width: 30px;
+}
+.search-drpdown{
+    height: 40px;
+    width: 110%;
+    margin-top: 6px;
+    border-radius: 0.4em;
+    border: none;
+}
+.btn-search{
+    height: 40px;
+}

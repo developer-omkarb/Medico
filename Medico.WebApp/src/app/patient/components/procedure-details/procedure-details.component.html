@@ -1,0 +1,94 @@
+<div class="row p-5">
+    <div class="card col-md-12 card-blueshadow">
+        <div class="text-center">
+            <span class="cardHeading">Procedure Details</span>
+        </div>
+        <form [formGroup]="procedureForm">
+            <div *ngIf="btnToggleRoleBased" class="row">
+                <div class="col text-right">
+                    <span class="add" (click)="addProcedureControls()"><i class="fas fa-plus-circle fa-3x icon-info" title="Add Procedure"></i></span>
+                </div>
+            </div>
+            <div *ngIf="showNotAvailableMsg" class="text-center header-primary ml-5 mr-5">
+                <h6>Procedure details has not been added by the Physician.</h6>
+            </div>
+            <div class="" formArrayName="procedureControlsArray">
+                <div class="row" *ngFor="let procedureControl of procedureControlsArray().controls; let i=index" [formGroupName]="i">
+
+                    <div class="col-md-2">
+                        <div class="form-group md-form">
+                            <label>Procedure</label>
+                            <input mdbInput list="procedures" (change)="setProcedureDescription(procedureControl)
+                          " class="form-control browser-default custom-select textfield dropdowns-datalist" formControlName="procedure" name="procedure">
+                            <datalist id="procedures">
+                                <option *ngFor="let proc of procedureMaster" value="{{proc.code}}">{{proc.code}}</option>
+                            </datalist>
+
+                            <div #procedureerrors *ngIf="procedureControl.get('procedure').touched && procedureControl.get('procedure').invalid" class="selecterroriconwrapper float-right">
+                                <erroricon (click)="showPopover($event,procedureerrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="procedureControl.get('procedure').hasError('required')">- Select procedure.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group md-form">
+                            <label>Procedure Description</label>
+                            <input mdbInput list="procdescriptions" (change)="setProcedureId(procedureControl)" class="form-control browser-default custom-select textfield dropdowns-datalist" formControlName="procdescription" name="procdescription">
+                            <datalist id="procdescriptions">
+                                <option *ngFor="let proc of procedureMaster" value="{{proc.approach}}">{{proc.approach}}</option>
+                            </datalist>
+                            <div #descriptionerrors *ngIf="procedureControl.get('procdescription').touched && procedureControl.get('procdescription').invalid" class="selecterroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,descriptionerrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="procedureControl.get('procdescription').hasError('required')">- Select Description.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group md-form">
+                            <label class="select-label">Deprecated</label>
+                            <select mdbInput class="form-control browser-default custom-select textfield dropdowns" formControlName="deprecated" name="deprecated">
+                                <option value=""></option>
+                                <option value=true>Yes</option>
+                                <option value=false>No</option>
+                            </select>
+                            <div #deprecatederrors *ngIf="procedureControl.get('deprecated').touched && procedureControl.get('deprecated').invalid" class="selecterroriconwrapper text-right">
+                                <erroricon (click)="showPopover($event,deprecatederrors)"></erroricon>
+                                <div class="errPopover">
+                                    <p class="text-danger inputfieldwarnings" *ngIf="procedureControl.get('deprecated').hasError('required')">- Select Yes/No.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 mt-4">
+                        <i *ngIf="btnToggleRoleBased" (click)="removeProcedureDetail(i);procedureForm.markAsDirty()" class="fas fa-times-circle fa-2x icon-danger" title="Remove Procedure"></i>
+                    </div>
+                </div>
+                <button *ngIf="btnToggleRoleBased" type="submit" (click)="saveProcedureDetails($event)" class="btn btn-success offset-md-5" [disabled]="!procedureForm.valid || !procedureForm.dirty" value="Submit" #saveButton>Save</button> &nbsp; &nbsp;
+                <button *ngIf="btnToggleRoleBased" type="reset" class="btn btn-danger" [disabled]="!procedureForm.touched && !procedureForm.valid" (click)="procedureForm.reset" value="Reset" #resetButton>Reset</button>
+                <br><br>
+            </div>
+        </form>
+      </div>
+</div>
+        <ng-template #popup>
+            <div class="modal-body">
+                <div>
+                    <h6>Do you want to proceed without saving Procedure Details? </h6>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="hidePopup()">
+                        OK
+                    </button>
+                    <br>
+                </div>
+            </div>
+        </ng-template>

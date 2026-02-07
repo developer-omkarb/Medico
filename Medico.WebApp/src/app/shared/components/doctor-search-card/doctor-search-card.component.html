@@ -1,0 +1,97 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row nopadding">
+                    <div class="col-md-4">
+                        <img matListAvatar class="profile-img-container" alt="profile Image..."
+                            src="../../../../assets/images/doctor.png">
+                    </div>
+                    <div class="col-md-8">
+                        <h3 matLine class="u-bold"><a href="/physician/profile/{{phyInfo.phyId}}" target="_blank"
+                                #phyname>Dr. {{phyInfo.name}}</a> </h3>
+                        <p hidden="true" #phyid>{{phyInfo.phyId}}</p>
+                        <p>{{phyInfo.spacialities}}</p>
+                        <p>{{phyInfo.exp}} Years Overall</p>
+                        <p>{{phyInfo.location}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-5 text-center" style="border-left: black;">
+                <div class="card m-lg-1">
+                    <div class="card-header"> <div class="text-info">Available Slots</div></div>
+                    <div class="timeslot" #slots><button class="timestotdata" [value]="slot.key"
+                            *ngFor="let slot of AvailableAppointments"
+                            (click)="onTimeSlotSelected(slot.key,$event.target,slots)">{{slot.value|twelvehourformat}}</button>
+                    </div>
+                    <div *ngIf="ShowNoAppointmentAvailableForSunday" class="header-info">
+                        No Appointments Available on Sundays
+                    </div>
+                    <div *ngIf="ShowAllAppointmetsBooked" class="header-info">
+                        No Appointments Available
+                    </div>
+                </div>
+                <!-- <p>Ratings:<span class="text-primary">{{phyInfo.score}} %</span></p>-->
+                <button type="submit" *ngIf="showAppointmentButton" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
+                    (click)="BookAppClick(phyid,phyname)">Book Appointment</button> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div *ngIf="showApproveDialog">
+    <div class="backdrop">
+        <div class="usermodal">
+            <div class="row">
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="col-md-8 mt-md-0 mt-4">
+                    <div class="card">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Appointment Details</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="appointmentTitleForm">
+                                <div class="form-group md-form">
+                                    <label for="appointmentTitle">Appointment Title <small class=""
+                                            style="color: red;">(Required minimum 10 characters)</small></label>
+
+                                    <input mdbInput type="text" name="appointmentTitle" class="form-control textfield"
+                                        required formControlName="appointmentTitleControl" minlength="5" required />
+                                </div>
+                                    <div class="md-form form-group"  *ngIf="isRoleNotPatient">
+                                      <label for="patient" class="select-label">Patient <small class=""
+                                        style="color: red;">(Required)</small></label>
+                                      <select mdbInput class="browser-default custom-select dropdowns textfield" name="patient" formControlName="patient">
+                                        <option *ngFor="let patient of patients" value={{patient.key}}>
+                                          {{patient.value}}
+                                        </option>
+                                      </select>
+                                    </div>
+                            </form>
+                            <div class="b-block"><b>Physician</b> : {{selectedApInfo.phyname}}</div>
+                            <div class="row noPadding">
+                                <div class="col-7"><i class="fas fa-calendar"></i> on {{selectedApInfo.selecteddate}}
+                                </div>
+                                <div class="col-5"><i class="fas fa-clock"></i> Scheduled at
+                                    {{selectedApInfo.selectedslottime}}</div>
+                            </div>
+                            <div class="info">
+                                <p><strong>Info!</strong> A appointment once made cannot be cancelled on the day of the
+                                    appointment</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                (click)="CancelAppointment()">Cancel</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal"
+                                [disabled]="!appointmentTitleForm.valid" (click)="CreateAppointment()">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light border-b" >
+  <div class="container-fluid">
+    
+    <div class="navbar-collapse">
+      <span class="pTitle">Medico</span>
+      <div class="navbar-collapse" #menuLinks>
+        <div *ngFor="let item of sidemenu_items;let i= index;" class="ellipsis">
+          <a [ngClass]="{'nav-link link-hover':true,'activeLink':i==0,'text-info':i!=0}" (click)="onLinkChange(item.link,$event.target,menuLinks)">{{item.itemname|uppercase}}</a>
+        </div>
+      </div>
+      
+    </div>
+      <!-- <input id="myInput"  type="text" name="search" placeholder="Search..."> -->
+    <span>Hi, <font class="text-success bold">{{username| titlecase}}</font></span>
+      <div class="dropdown padding dropdown">
+        <a
+          class="dropdown-toggle d-flex align-items-center hidden-arrow"
+          id="navbarDropdownMenuAvatar"
+          role="button"
+          aria-expanded="false"
+        >
+          <img
+            src="../../../../assets/images/physician.png"
+            class="rounded-circle"
+            height="25"
+            alt="Black and White Portrait of a Man"
+            loading="lazy"
+          />
+        </a>
+        <div class="dropdown-content">
+            <a class="dropdown-item" *ngIf="showProfile" [href]="profileLink">My Profile</a>
+            <a class="dropdown-item" [href]="changePasswordLink">Change Password</a>
+            <a class="dropdown-item" (click)="logOut()">Logout</a>
+        </div>
+      </div>
+      <div *ngIf="role=='Patient'" class="dropdown">
+        <a class="text-reset p-1 ml-3" (click)="toogleNotifiation()">
+          <i class="fas fa-bell" style="font-size: 1.3em;" ></i>
+          <span class="badge rounded-pill badge-notification bg-danger text-white">{{noOfNotifications}}</span>
+        </a>
+      </div>
+      
+    </div>
+</nav>
+
+  <div *ngIf="showPopUp">
+    <app-add-user [selectedUser]="userData" (onCloseEvent)="closePopUp($event)"></app-add-user>
+  </div>
+

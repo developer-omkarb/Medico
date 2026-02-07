@@ -1,0 +1,98 @@
+<div class="row p-5 nopadding">
+  <div class="card col-md-12 card-blueshadow">
+    <div class="text-center">
+      <span class="cardHeading">Diagnosis Details</span>
+    </div>
+    <form [formGroup]="diagnosisForm">
+      <div *ngIf="btnToggleRoleBased" class="row">
+        <div class="col text-right">
+          <span class="add" *ngIf="btnToggleRoleBased" (click)="addDiagnosisControls()"><i class="fas fa-plus-circle fa-3x icon-info" title="Add Diagnosis"></i></span>
+        </div>
+      </div>
+      <div *ngIf="showNotAvailableMsg" class="text-center header-primary ml-5 mr-5">
+        <h6>Diagnosis details has not been added by the Physician.</h6>
+      </div>
+      <div class="" formArrayName="diagnosisControlsArray">
+        <div class="row" *ngFor="let diagnosisControl of diagnosisControlsArray().controls; let i=index" [formGroupName]="i">
+
+          <div class="col-md-2">
+            <div class="form-group md-form">
+              <label>Diagnosis</label>
+              <input mdbInput list="diagnoses" (change)="setDiagnosisDescription(diagnosisControl)
+                          " class="form-control browser-default custom-select textfield dropdowns-datalist" formControlName="diagnosis" name="diagnosis">
+              <datalist id="diagnoses">
+                <option *ngFor="let diagnos of diagnosisMaster" value="{{diagnos.code}}">{{diagnos.code}}</option>
+              </datalist>
+
+              <div #diagnosiserrors *ngIf="diagnosisControl.get('diagnosis').touched && diagnosisControl.get('diagnosis').invalid" class="selecterroriconwrapper float-right">
+                <erroricon (click)="showPopover($event,diagnosiserrors)"></erroricon>
+                <div class="errPopover">
+                  <p class="text-danger inputfieldwarnings" *ngIf="diagnosisControl.get('diagnosis').hasError('required')">
+                    - Select diagnosis.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group md-form">
+              <label>Diagnosis Description</label>
+              <input mdbInput list="descriptions" (change)="setDiagnosisId(diagnosisControl)" class="form-control browser-default custom-select textfield dropdowns-datalist" formControlName="description" name="description">
+              <datalist id="descriptions">
+                <option *ngFor="let desc of diagnosisMaster" value="{{desc.description}}">{{desc.description}}</option>
+              </datalist>
+              <div #descriptionerrors *ngIf="diagnosisControl.get('description').touched && diagnosisControl.get('description').invalid" class="selecterroriconwrapper text-right">
+                <erroricon (click)="showPopover($event,descriptionerrors)"></erroricon>
+                <div class="errPopover">
+                  <p class="text-danger inputfieldwarnings" *ngIf="diagnosisControl.get('description').hasError('required')">
+                    - Select Description.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group md-form">
+              <label class="select-label">Deprecated</label>
+              <select mdbInput class="form-control browser-default custom-select textfield dropdowns" formControlName="deprecated" name="deprecated">
+                <option value=""></option>
+                <option value=true>Yes</option>
+                <option value=false>No</option>
+              </select>
+              <div #deprecatederrors *ngIf="diagnosisControl.get('deprecated').touched && diagnosisControl.get('deprecated').invalid" class="selecterroriconwrapper text-right">
+                <erroricon (click)="showPopover($event,deprecatederrors)"></erroricon>
+                <div class="errPopover">
+                  <p class="text-danger inputfieldwarnings" *ngIf="diagnosisControl.get('deprecated').hasError('required')">
+                    - Select Yes/No.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="btnToggleRoleBased" class="col-md-1 mt-4">
+            <i (click)="removeDiagnosisDetail(i);diagnosisForm.markAsDirty()" class="fas fa-times-circle fa-2x icon-danger" title="Remove Diagnosis"></i>
+          </div>
+        </div>
+        <button *ngIf="btnToggleRoleBased" type="submit" (click)="saveDiagnosisDetails($event)" class="btn btn-success offset-md-5" [disabled]="!diagnosisForm.valid || !diagnosisForm.dirty" value="Submit" #saveButton>Save</button> &nbsp; &nbsp;
+        <button *ngIf="btnToggleRoleBased" type="reset" class="btn btn-danger" [disabled]="!diagnosisForm.dirty && !diagnosisForm.valid" (click)="diagnosisForm.reset" value="Reset" #resetButton>Reset</button>
+        <br><br>
+      </div>
+    </form>
+  </div>
+</div>
+<ng-template #popup>
+  <div class="modal-body">
+    <div>
+      <h6>Do you want to proceed without saving Diagnosis Details? </h6>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-sm btn-outline-secondary" (click)="hidePopup()">
+        OK
+      </button>
+      <br>
+    </div>
+  </div>
+</ng-template>
+

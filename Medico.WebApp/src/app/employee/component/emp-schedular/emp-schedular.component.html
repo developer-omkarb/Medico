@@ -1,0 +1,10 @@
+<div class="header">
+    <div class="search">
+        <div class="row nopadding">
+            <div class="col-md-10 offset-md-1" >
+                <app-search-bar (searchClickEvent)="getSearchedInfo($event)"></app-search-bar>
+            </div>
+        </div>
+    </div>
+</div>
+<app-infinite-scroller [searchtxtboxval] = "searchTextVal" [searchdrpdownval]="searchDrpDwnVal" [searchDateVal]="searchDateVal" ></app-infinite-scroller>

@@ -1,0 +1,821 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "UserId": "b7270710-d834-4930-8b80-2625db269684",
+      "email": "sumit@kumar.com",
+      "password": "b0c9301a3109ccbbe21b6957cab14f336a484ab9aeaa77a5fedf4c57622dbecd",
+      "roleId": 1,
+      "lastChangedPasswordOn": "2022-02-10T13:09:25.352Z",
+      "Active": true,
+      "createdBy": null,
+      "createdDate": "2022-02-10T11:52:47.333Z",
+      "role": "Patient",
+      "isFirstLogin": false
+    },
+    {
+      "id": 2,
+      "UserId": "eba6d49e-e93a-4932-813f-d5c2a786a586",
+      "email": "raghavmehra@gmail.com",
+      "password": "2f2b2e47926c175854963a6675841b51bbb7fff8d8caedb283d8b93783323c22",
+      "roleId": 1,
+      "lastChangedPasswordOn": "2022-02-17T11:25:18.471Z",
+      "Active": true,
+      "createdBy": null,
+      "createdDate": "2022-02-17T11:24:03.830Z",
+      "role": "Patient",
+      "isFirstLogin": false
+    },
+    {
+      "id": 3,
+      "UserId": "48626378-e6d4-49cf-bc86-848e88374b24",
+      "email": "ketaki@gmail.com",
+      "password": "7210c52e51d28a44f6bd274fcbb9e3ebe2d7fccd2c18c0df5ed3c9a4dd7dee0d",
+      "roleId": 1,
+      "lastChangedPasswordOn": "2022-02-22T12:51:59.867Z",
+      "Active": true,
+      "createdBy": null,
+      "createdDate": "2022-02-22T12:51:30.798Z",
+      "role": "Patient",
+      "isFirstLogin": false
+    },
+    {
+      "id": 4,
+      "UserId": "1c090065-5237-4c79-a620-f9c6a7873950",
+      "email": "jasmile.rampal@citiustech.com",
+      "password": "34c5aa4ba25b496790c3dbf568d9a463e05b278fb4b3340833e577dcb4c8c122",
+      "roleId": 1,
+      "lastChangedPasswordOn": "2022-03-08T12:50:52.986Z",
+      "Active": true,
+      "createdBy": null,
+      "createdDate": "2022-03-08T12:49:51.936Z",
+      "role": "Patient",
+      "isFirstLogin": false
+    }
+  ],
+  "loginHistory": [
+    {
+      "id": 1,
+      "userid": "eba6d49e-e93a-4932-813f-d5c2a786a586",
+      "ipAddress": "1.38.202.95",
+      "logindatetime": "2022-02-17T11:25:00.135Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1
+    },
+    {
+      "id": 2,
+      "userid": "eba6d49e-e93a-4932-813f-d5c2a786a586",
+      "ipAddress": "1.38.202.95",
+      "logindatetime": "2022-02-17T11:44:02.876Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1
+    },
+    {
+      "id": 3,
+      "userid": "eba6d49e-e93a-4932-813f-d5c2a786a586",
+      "ipAddress": "1.38.202.95",
+      "logindatetime": "2022-02-17T12:38:07.285Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1
+    },
+    {
+      "id": 4,
+      "userid": "eba6d49e-e93a-4932-813f-d5c2a786a586",
+      "ipAddress": "122.180.190.35",
+      "logindatetime": "2022-02-18T11:22:05.444Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1
+    },
+    {
+      "id": 5,
+      "userid": "48626378-e6d4-49cf-bc86-848e88374b24",
+      "ipAddress": "122.176.202.19",
+      "logindatetime": "2022-02-22T12:51:44.518Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1
+    },
+    {
+      "id": 6,
+      "userid": "1c090065-5237-4c79-a620-f9c6a7873950",
+      "ipAddress": "103.248.115.46",
+      "logindatetime": "2022-03-08T12:50:04.433Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1
+    },
+    {
+      "ipAddress": "103.248.115.46",
+      "logindatetime": "2022-03-09T17:14:13.955Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 7
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-10T12:05:45.715Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 8
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-10T12:22:55.267Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 9
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-10T12:47:44.819Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 10
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-10T12:53:41.853Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 11
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-10T13:28:55.332Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 12
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-10T13:49:16.459Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 13
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T04:31:26.283Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 14
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T04:32:37.394Z",
+      "loggedOutAt": null,
+      "loginAttempts": 2,
+      "id": 15
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T04:34:29.036Z",
+      "loggedOutAt": null,
+      "loginAttempts": 3,
+      "id": 16
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T05:10:20.079Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 17
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T05:21:36.904Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 18
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T05:22:47.038Z",
+      "loggedOutAt": null,
+      "loginAttempts": 2,
+      "id": 19
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T05:27:00.138Z",
+      "loggedOutAt": null,
+      "loginAttempts": 3,
+      "id": 20
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T05:49:11.275Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 21
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T05:51:08.480Z",
+      "loggedOutAt": null,
+      "loginAttempts": 2,
+      "id": 22
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T05:52:26.288Z",
+      "loggedOutAt": null,
+      "loginAttempts": 3,
+      "id": 23
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T06:02:31.429Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 24
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T06:03:05.461Z",
+      "loggedOutAt": null,
+      "loginAttempts": 2,
+      "id": 25
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T06:07:19.991Z",
+      "loggedOutAt": null,
+      "loginAttempts": 3,
+      "id": 26
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T06:16:05.142Z",
+      "loggedOutAt": null,
+      "loginAttempts": 2,
+      "id": 27
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T06:46:10.704Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 28
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T09:40:17.541Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 29
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T09:40:19.082Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 30
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T09:42:52.277Z",
+      "loggedOutAt": null,
+      "loginAttempts": 3,
+      "id": 31
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T09:57:20.629Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 32
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T10:03:50.475Z",
+      "loggedOutAt": null,
+      "loginAttempts": 2,
+      "id": 33
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T10:25:04.952Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 34
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T12:24:31.797Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 35
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T12:43:39.132Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 36
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T12:58:34.330Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 37
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T12:59:59.001Z",
+      "loggedOutAt": null,
+      "loginAttempts": 2,
+      "id": 38
+    },
+    {
+      "ipAddress": "122.180.180.167",
+      "logindatetime": "2022-03-11T13:28:21.063Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 39
+    },
+    {
+      "ipAddress": "122.176.202.255",
+      "logindatetime": "2022-03-12T11:32:26.493Z",
+      "loggedOutAt": null,
+      "loginAttempts": 1,
+      "id": 40
+    }
+  ],
+  "patients": [
+    {
+      "patientId": "28f7eeeb-b4c7-414b-bc93-88c6ee56dfcb",
+      "titleId": "Mr",
+      "firstName": "Sumit",
+      "lastName": "Kumar",
+      "dob": "1984-02-08T18:30:00.000Z",
+      "contactNumber": "9988998877",
+      "gender": "male",
+      "UserId": "b7270710-d834-4930-8b80-2625db269684",
+      "id": 1
+    },
+    {
+      "patientId": "4ab179cd-bee6-42ad-8459-6881996949e3",
+      "titleId": "Oth",
+      "firstName": "Raghav",
+      "lastName": "Mehra",
+      "dob": "2015-02-10T11:22:55.000Z",
+      "contactNumber": "9988007766",
+      "gender": "Male",
+      "UserId": "eba6d49e-e93a-4932-813f-d5c2a786a586",
+      "id": 2
+    },
+    {
+      "patientId": "d37b9905-fdcf-493f-8ee7-4b97fdd9ba5b",
+      "titleId": "Oth",
+      "firstName": "Ketaki",
+      "lastName": "Kashyap",
+      "dob": "1991-06-13T18:30:00.000Z",
+      "contactNumber": "9958772058",
+      "gender": "Female",
+      "UserId": "48626378-e6d4-49cf-bc86-848e88374b24",
+      "id": 3
+    },
+    {
+      "patientId": "cd4b6935-0e8b-42c3-837c-7322598ca971",
+      "titleId": "Mr",
+      "firstName": "Jasmile",
+      "lastName": "Rampal",
+      "dob": "2014-01-31T18:30:00.000Z",
+      "contactNumber": "9756434523",
+      "dialcode": "+91",
+      "gender": "Male",
+      "UserId": "1c090065-5237-4c79-a620-f9c6a7873950",
+      "id": 4
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "doctorname": "Karan Goel"
+    },
+    {
+      "id": 2,
+      "doctorname": "Varun Verma"
+    }
+  ],
+  "nurses": [
+    {
+      "id": 1,
+      "nursename": "Riya Raiy"
+    },
+    {
+      "id": 2,
+      "nursename": "Suresh Kumar"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "appointmentId": "1",
+      "appointmentstatusid": 1,
+      "title": "Normal Cough",
+      "patientid": 1,
+      "doctorid": 1,
+      "nurseid": 1,
+      "createdby": "",
+      "createddate": "2022-02-02",
+      "modifiedby": "",
+      "modifieddate": null,
+      "appointmentdate": "2022-03-07",
+      "appointmenttime": "10:00AM",
+      "doctorname": null,
+      "diagnosis": [],
+      "prescription": [],
+      "procedures": [],
+      "vitalsigns": [],
+      "patient": null,
+      "appointmentstatus": null
+    },
+    {
+      "id": 2,
+      "appointmentId": "2",
+      "appointmentstatusid": 2,
+      "title": "Fever with body ache",
+      "patientid": 2,
+      "doctorid": 2,
+      "nurseid": 1,
+      "createdby": "",
+      "createddate": "2022-02-04",
+      "modifiedby": "",
+      "modifieddate": null,
+      "appointmentdate": "2022-03-07",
+      "appointmenttime": "01:00PM",
+      "doctorname": null,
+      "diagnosis": [],
+      "prescription": [],
+      "procedures": [],
+      "vitalsigns": [],
+      "patient": null,
+      "appointmentstatus": null
+    },
+    {
+      "id": 3,
+      "appointmentId": "3",
+      "appointmentstatusid": 2,
+      "title": "Severe back pain",
+      "patientid": 3,
+      "doctorid": 2,
+      "nurseid": 1,
+      "createdby": "",
+      "createddate": "2022-03-04",
+      "modifiedby": "",
+      "modifieddate": null,
+      "appointmentdate": "2022-03-11",
+      "appointmenttime": "05:00PM",
+      "doctorname": null,
+      "diagnosis": [],
+      "prescription": [],
+      "procedures": [],
+      "vitalsigns": [],
+      "patient": null,
+      "appointmentstatus": null
+    }
+  ],
+  "vitalsignsmaster": [
+    {
+      "id": 1,
+      "name": "Body Temperature",
+      "unit": "C"
+    },
+    {
+      "id": 2,
+      "name": "Weight",
+      "unit": "KG"
+    },
+    {
+      "id": 3,
+      "name": "Height",
+      "unit": "Inch"
+    },
+    {
+      "id": 4,
+      "name": "Blood Pressure",
+      "unit": "mg/dl"
+    },
+    {
+      "id": 5,
+      "name": "Respiration Rate",
+      "unit": "bpm"
+    }
+  ],
+  "vitalsigns": [
+    {
+      "patientvisitdetailid": 1,
+      "appointmentid": 1,
+      "vitalsigns": [
+        {
+          "vitalsignid": 1,
+          "value": 100
+        },
+        {
+          "vitalsignid": 2,
+          "value": 40
+        },
+        {
+          "vitalsignid": 3,
+          "value": 5.2
+        },
+        {
+          "vitalsignid": 4,
+          "value": 122
+        },
+        {
+          "vitalsignid": 5,
+          "value": 99
+        }
+      ],
+      "patientprescriptionid": null,
+      "description": null,
+      "createdby": 1,
+      "createddate": "2022-02-22",
+      "modifiedby": null,
+      "modifieddate": null
+    }
+  ],
+  "proceduresmaster": [
+    {
+      "procedureid": 1,
+      "code": "0016070",
+      "description": "Bypass Cerebral Ventricle to Nasopharynx with Autologous Tissue Substitute, Open Approach",
+      "isdepricated": false
+    },
+    {
+      "procedureid": 2,
+      "code": "0016071",
+      "description": "Bypass Cerebral Ventricle to Mastoid Sinus with Autologous Tissue Substitute, Open Approach",
+      "isdepricated": false
+    },
+    {
+      "procedureid": 3,
+      "code": "0016072",
+      "description": "Bypass Cerebral Ventricle to Atrium with Autologous Tissue Substitute, Open Approach",
+      "isdepricated": false
+    },
+    {
+      "procedureid": 4,
+      "code": "0016073",
+      "description": "Bypass Cerebral Ventricle to Blood Vessel with Autologous Tissue Substitute, Open Approach",
+      "isdepricated": false
+    },
+    {
+      "procedureid": 5,
+      "code": "0016074",
+      "description": "Bypass Cerebral Ventricle to Pleural Cavity with Autologous Tissue Substitute, Open Approach",
+      "isdepricated": false
+    }
+  ],
+  "diagnosismaster": [
+    {
+      "diagnosisid": 1,
+      "code": "A1814",
+      "description": "Tuberculosis of prostate",
+      "isdepricated": false
+    },
+    {
+      "diagnosisid": 2,
+      "code": "C9150",
+      "description": "Adult T-cell lymph/leuk (HTLV-1-assoc) not achieve remission",
+      "isdepricated": false
+    },
+    {
+      "diagnosisid": 3,
+      "code": "C9151",
+      "description": "Adult T-cell lymph/leuk (HTLV-1-assoc) not achieve remission",
+      "isdepricated": false
+    },
+    {
+      "diagnosisid": 4,
+      "code": "C9152",
+      "description": "Adult T-cell lymphoma/leukemia (HTLV-1-assoc), in relapse",
+      "isdepricated": false
+    },
+    {
+      "diagnosisid": 5,
+      "code": "F0150",
+      "description": "Vascular dementia without behavioral disturbance",
+      "isdepricated": false
+    },
+    {
+      "diagnosisid": 6,
+      "code": "F0151",
+      "description": "Vascular dementia with behavioral disturbance",
+      "isdepricated": false
+    }
+  ],
+  "medicinemaster": [
+    {
+      "drugid": 1,
+      "drugCode": "004",
+      "drugName": "PAREDRINE",
+      "drugGenericName": "HYDROXYAMPHETAMINE HYDROBROMIDE",
+      "drugForm": "SOLUTION/DROPS;OPHTHALMIC",
+      "drugStrength": "1%"
+    },
+    {
+      "drugid": 2,
+      "drugCode": "002",
+      "drugName": "LIQUAEMIN SODIUM",
+      "drugGenericName": "HEPARIN SODIUM",
+      "drugForm": "INJECTABLE;INJECTION",
+      "drugStrength": "40,000 UNITS/ML"
+    },
+    {
+      "drugid": 3,
+      "drugCode": "001",
+      "drugName": "LIQUAEMIN SODIUM",
+      "drugGenericName": "HEPARIN SODIUM",
+      "drugForm": "INJECTABLE;INJECTION",
+      "drugStrength": "20,000 UNITS/ML"
+    },
+    {
+      "drugid": 4,
+      "drugCode": "001",
+      "drugName": "SULFAPYRIDINE",
+      "drugGenericName": "HYDROXYAMPHETAMINE HYDROBROMIDE",
+      "drugForm": "TABLET;ORAL",
+      "drugStrength": "500MG"
+    }
+  ],
+  "prescriptionDetails": [
+    {
+      "patientprescriptionid": 1,
+      "appointmentid": 1,
+      "createdby": null,
+      "createddate": "2022-02-20",
+      "modifiedby": null,
+      "modifieddate": null,
+      "medicines": []
+    },
+    {
+      "patientprescriptionid": 2,
+      "appointmentid": 2,
+      "createdby": null,
+      "createddate": "2022-02-20",
+      "modifiedby": null,
+      "modifieddate": null,
+      "medicines": []
+    }
+  ],
+  "medicinedetails": [
+    {
+      "medicinedetailid": 1,
+      "patientprescriptionid": 1,
+      "medicineid": 4,
+      "dosageDetails": "2",
+      "prescriptionnote": "Two tablets before breakfast for 10 days",
+      "form": null,
+      "drugName": null
+    },
+    {
+      "medicinedetailid": 2,
+      "patientprescriptionid": 1,
+      "medicineid": 1,
+      "dosageDetails": "2",
+      "prescriptionnote": "Before going to bed for 1  month",
+      "form": null,
+      "drugName": null
+    },
+    {
+      "medicinedetailid": 3,
+      "patientprescriptionid": 2,
+      "medicineid": 4,
+      "dosageDetails": "2",
+      "prescriptionnote": "Two tablets before breakfast for 10 days",
+      "form": null,
+      "drugName": null
+    },
+    {
+      "medicinedetailid": 4,
+      "patientprescriptionid": 2,
+      "medicineid": 1,
+      "dosageDetails": "2",
+      "prescriptionnote": "Before going to bed for 1  month",
+      "form": null,
+      "drugName": null
+    },
+    {
+      "medicinedetailid": 5,
+      "patientprescriptionid": 2,
+      "medicineid": 2,
+      "dosageDetails": "4",
+      "prescriptionnote": "Two tablets before breakfast for 10 days",
+      "form": null,
+      "drugName": null
+    },
+    {
+      "medicinedetailid": 6,
+      "patientprescriptionid": 1,
+      "medicineid": 3,
+      "dosageDetails": "2",
+      "prescriptionnote": "Before going to bed for 1  month",
+      "form": null,
+      "drugName": null
+    }
+  ],
+  "diagnosisdetails": [
+    {
+      "patientdiagnosisid": 1,
+      "diagnosisid": 1,
+      "diagnosisnote": "Soon to be done",
+      "appointmentid": 1,
+      "createdby": null,
+      "createddate": "2022-01-30",
+      "modifiedby": null,
+      "modifieddate": null,
+      "description": null
+    },
+    {
+      "patientdiagnosisid": 1,
+      "diagnosisid": 2,
+      "diagnosisnote": "We can wait for this",
+      "appointmentid": 1,
+      "createdby": null,
+      "createddate": "2022-01-30",
+      "modifiedby": null,
+      "modifieddate": null,
+      "description": null
+    }
+  ],
+  "proceduredetails": [
+    {
+      "patientprocedureid": 1,
+      "procedrueid": 1,
+      "procedurenote": "random",
+      "appointmentid": 1,
+      "createdby": null,
+      "createddate": "2022-01-12",
+      "modifiedby": null,
+      "modifieddate": null,
+      "description": null
+    }
+  ],
+  "patient-profile": [
+    {
+      "id": 1,
+      "firstName": "Sumit",
+      "lastName": "Kumar"
+    },
+    {
+      "firstName": "Omkar",
+      "lastName": "Baswat",
+      "id": 2
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "id": 3
+    }
+  ],
+  "titles": [
+    {
+      "titleid": 1,
+      "value": "Mr"
+    },
+    {
+      "titleid": 2,
+      "value": "Ms"
+    },
+    {
+      "titleid": 3,
+      "value": "Mrs"
+    },
+    {
+      "titleid": 4,
+      "value": "Mx"
+    }
+  ],
+  "dialCodes": [
+    {
+      "dialcodeid": 1,
+      "countryid": 1,
+      "dialCode": "+91"
+    },
+    {
+      "dialcodeid": 2,
+      "countryid": 2,
+      "dialCode": "+44"
+    },
+    {
+      "dialcodeid": 3,
+      "countryid": 3,
+      "dialCode": "+22"
+    }
+  ],
+  "roles": [
+    {
+      "roleid": 1,
+      "code": "N",
+      "name": "Nurse"
+    },
+    {
+      "roleid": 2,
+      "code": "PH",
+      "name": "Physician"
+    }
+  ]
+}

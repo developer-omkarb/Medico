@@ -1,0 +1,123 @@
+<div class="row p-5 nopadding">
+    <div class="card col-md-12 card-blueshadow">
+        <div class="text-center">
+            <span class="cardHeading">Prescribe Medicines</span>
+        </div>
+        <form [formGroup]="form">
+            <div class="row">
+                <div *ngIf="btnToggleRoleBased" class="col text-right">
+                    <span class="add" (click)="addMedication()"><i class="fas fa-plus-circle fa-3x icon-info"
+              title="Add Medicine"></i></span>
+                </div>
+            </div>
+            <div *ngIf="showNotAvailableMsg" class="text-center header-primary ml-5 mr-5">
+                <h6>Medication details has not been added by the Physician</h6>
+            </div>
+            <div *ngIf="!btnToggleRoleBased">
+                <br><br>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div *ngFor="let med of medicationFormGroups;index as i">
+                        <div [formGroup]="med">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group md-form">
+                                        <label for="medicinid">Drug ID</label>
+                                        <input mdbInput list="drugid" (change)="updateDrugName(i,med)" name="medicinid" class="form-control browser-default custom-select textfield dropdowns-datalist" formControlName="medicinid">
+                                        <datalist id="drugid">
+                      <option *ngFor="let drug of medicinesIdTemp">{{drug.medicinid}}</option>
+                    </datalist>
+                                        <div #drugiderrors *ngIf="med.controls.medicinid.touched && med.controls.medicinid.invalid" class="erroriconwrapper text-right">
+                                            <erroricon (click)="showPopover($event,drugiderrors)"></erroricon>
+                                            <div class="errPopover">
+                                                <p class="text-danger inputfieldwarnings" *ngIf="med.controls.medicinid.hasError('required')">- Select drug id.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group md-form">
+                                        <label for="drugname">Drug Name</label>
+                                        <input mdbInput list="dname" (change)="updateDrugForm(i,med)" name="drugname" class="form-control browser-default custom-select textfield dropdowns-datalist" formControlName="drugname">
+                                        <datalist id="dname">
+                      <option *ngFor="let drug of medicinesTemp">{{drug.drugname}}</option>
+                    </datalist>
+                                        <div #drugnameerrors *ngIf="med.controls.drugname.touched && med.controls.drugname.invalid" class="erroriconwrapper text-right">
+                                            <erroricon (click)="showPopover($event,drugnameerrors)"></erroricon>
+                                            <div class="errPopover">
+                                                <p class="text-danger inputfieldwarnings" *ngIf="med.controls.drugname.hasError('required')">- Select drug name.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group md-form">
+                                        <label for="name">Drug Form</label>
+                                        <input mdbInput list="dforms" (change)="updateDrugId(i,med)" name="drugform" class="form-control browser-default custom-select textfield dropdowns-datalist" formControlName="drugform">
+                                        <datalist id="dforms">
+                      <option *ngFor="let fm of medicinesFormTemp">{{fm.form}}</option>
+                    </datalist>
+                                        <div #drugformerrors *ngIf="med.controls.drugform.touched && med.controls.drugform.invalid" class="erroriconwrapper text-right">
+                                            <erroricon (click)="showPopover($event,drugformerrors)"></erroricon>
+                                            <div class="errPopover">
+                                                <p class="text-danger inputfieldwarnings" *ngIf="med.controls.drugform.hasError('required')">- Select drug form.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-3">
+                  <span class="add" (click)="deleteMedicine(i)"><i class="fa-solid fa-circle-xmark" title="Delete"></i></span>-->
+                                <!--<button class="btn btn-danger" (click)="deleteCourse(i)">Delete</button>-->
+                                <!--</div>-->
+
+                                <div class="col-md-2">
+                                    <div class="form-group md-form">
+                                        <label for="name">Dosage</label>
+                                        <input mdbInput name="dosage" type="text" formControlName="dosagedetails" class="form-control textfield">
+                                        <div #dosagedetailserrors *ngIf="med.controls.dosagedetails.touched && med.controls.dosagedetails.invalid" class="erroriconwrapper text-right">
+                                            <erroricon (click)="showPopover($event,dosagedetailserrors)"></erroricon>
+                                            <div class="errPopover">
+                                                <p class="text-danger inputfieldwarnings" *ngIf="med.controls.dosagedetails.hasError('required')">- Enter dosage.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group md-form">
+                                        <label for="name">Note</label>
+                                        <input mdbInput name="note" type="text" formControlName="prescriptionnote" class="form-control textfield">
+                                    </div>
+                                </div>
+                                <div *ngIf="btnToggleRoleBased" class="col-md-1 mt-4">
+                                    <i (click)="deleteMedicine(i);form.markAsDirty()" class="fas fa-times-circle fa-2x icon-danger" title="Remove Medicine"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div *ngIf="btnToggleRoleBased" class="col text-center">
+                    <button type="submit" (click)="saveMedication($event)" class="btn btn-success rounded" [disabled]="!form.valid || !form.dirty" #saveButton>Save</button>&nbsp; &nbsp;
+                    <button class="btn btn-danger rounded" [disabled]="!form.dirty || !form.valid" (click)="resetForm()" #resetButton>Reset</button>
+                    <br><br>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<ng-template #popup>
+    <div class="modal-body">
+        <div>
+            <h6>Do you want to proceed without saving Medication Details? </h6>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="hidePopup()">
+                OK
+            </button>
+            <br>
+        </div>
+    </div>
+</ng-template>

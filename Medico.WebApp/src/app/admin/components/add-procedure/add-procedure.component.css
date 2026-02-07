@@ -1,0 +1,20 @@
+.procedureModal
+{
+    width: 40%;
+    position: absolute;
+    left: 31%;
+    z-index: 10;
+    top: 10%;
+}
+.backdrop{
+    position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+.labelColor{
+    color: #929292;
+}

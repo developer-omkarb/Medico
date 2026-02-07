@@ -1,0 +1,8 @@
+.padding-top-10px{
+    padding-top: 10px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }

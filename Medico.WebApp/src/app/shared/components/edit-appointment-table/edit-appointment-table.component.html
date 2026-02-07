@@ -1,0 +1,55 @@
+<ngx-datatable #apptTable class='bootstrap card-blueshadow' [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"
+[rows]='appointments'  [limit]="table_page_size"
+[rowClass]="getRowClass">
+<ngx-datatable-column name="" prop="appointmentId" [sortable]="false" maxWidth="80">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <a (click)="redirectToAppointmentDetails(value)" class="view-link">
+      <mdb-icon far icon="eye" class="icon-size"></mdb-icon>
+    </a>
+    <a (click)="edit(row)" class="view-link icon-size" >
+      <i class="fas fa-pencil-alt fa-lg" title="Edit"></i>
+    </a>
+  </ng-template>
+</ngx-datatable-column>
+<!-- <ngx-datatable-column *ngIf="isRoleNurse" name="Appointment ID" prop="appointmentId"></ngx-datatable-column>     -->
+<ngx-datatable-column *ngIf="isRoleNurse" name="Patient" prop="patientName" maxWidth="140"></ngx-datatable-column>
+
+<ngx-datatable-column name="Title" prop="appointmentTitle" [cellClass]="getCellClass"></ngx-datatable-column>
+
+<ngx-datatable-column name="Description" prop="description"></ngx-datatable-column>
+<ngx-datatable-column *ngIf="isRoleNurse" name="Physician Id" prop="physicianId" maxWidth="100"></ngx-datatable-column>
+<ngx-datatable-column name="Physician" prop="physicianName">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <!--<a href="#" class="view-link">-->
+      Dr. {{row.physicianName}}
+    <!--</a>-->
+
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column>
+  <ng-template let-column="column" ngx-datatable-header-template>
+  Scheduled On
+  </ng-template>
+  <ng-template let-row="row" ngx-datatable-cell-template>
+  <strong> {{row.appointmentDate|date}} - {{row.appointmentTime|twelvehourformat}}</strong>
+  </ng-template>
+</ngx-datatable-column>
+<ngx-datatable-column name="Status" prop="appointmentStatus" maxWidth="100"></ngx-datatable-column>
+<ngx-datatable-column *ngIf="isRoleNurse" name="Created By" prop="createdBy"></ngx-datatable-column>
+<ngx-datatable-column name="" prop="appointmentId" [sortable]="false" maxWidth="100">
+  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <a (click)="Cancel(value)" class="view-link text-primary cancel" *ngIf="row.appointmentStatus!='Visited' && row.appointmentStatus!='Declined' && row.appointmentStatus!='Cancelled'">
+      Cancel
+    </a>
+  </ng-template>
+</ngx-datatable-column>
+<!-- <ngx-datatable-column *ngIf="isRoleNurse" name="Creation Date" prop="createdDate"></ngx-datatable-column>
+<ngx-datatable-column *ngIf="isRoleNurse" name="Modified By" prop="modifiedBy"></ngx-datatable-column>
+<ngx-datatable-column *ngIf="isRoleNurse" name="Modified Date" prop="modifiedDate"></ngx-datatable-column>      -->
+</ngx-datatable>
+
+
+<!-- Modal -->
+<div *ngIf="showAppointmenEditDialog">
+  <app-edit-appointment-form [selectedTableRow] ="selectedTableRow" (closeAppointmentPromptEvent) = "onCloseAppointmentPromptEvent($event)"></app-edit-appointment-form>
+</div>

@@ -1,0 +1,17 @@
+<div [formGroup]="searchForm" class="row">
+            <div class="col-md-6 search-shell">
+                <img src="../../../../assets/images/search.jpg" class="search-img">
+                <input type="text" class="searchtxtbox" placeholder="Search for Doctors..." formControlName="searchtxtbox" (keyup)="onTextBoxChange()">
+            </div>
+            <div class="col-md-3">
+                <select name="spaciality" id="spaciality"  class="search-drpdown" formControlName="searchdrpdown" (change)="onDropDownChange()">
+                    <option value="">Select Speciality</option>
+                    <option *ngFor="let spaciality of spacialities" [value]="spaciality.specialityid">{{spaciality.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                    <input mdbInput type="text" id="appdate" name="DOB" class="form-control textfield search-drpdown"
+                        #datepickerDOB="bsDatepicker" bsDatepicker (ngModelChange)="AppointmentDataChange()"
+                        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" formControlName="appdate" />
+            </div>
+</div>

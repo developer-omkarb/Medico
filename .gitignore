@@ -1,28 +1,133 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+#################################
+# ANGULAR / NODE
+#################################
 
-# Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
+# Node dependencies
+**/node_modules/
 
-# Environment files
-/.env
+# Angular build output
+**/dist/
+**/out-tsc/
+**/tmp/
+**/.angular/
 
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
+# Angular / Node env files
+**/.env
+**/.env.*
+!**/.env.example
 
-# TypeScript cache
+# Package locks (choose your preference)
+package-lock.json
+yarn.lock
+
+# Angular cache
 *.tsbuildinfo
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#################################
+# .NET / VISUAL STUDIO
+#################################
+
+# Build output
+**/bin/
+**/obj/
+Debug/
+Release/
+x64/
+x86/
+AnyCPU/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.userprefs
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+#################################
+# ASP.NET CORE
+#################################
+
+# App settings (keep base file only)
+**/appsettings.Development.json
+**/appsettings.Local.json
+**/appsettings.Staging.json
+**/appsettings.Production.json
+
+# Optional safer pattern
+# **/appsettings.*.json
+# !**/appsettings.json
+
+# Web publish output
+**/wwwroot/
+
+#################################
+# SECRETS & CERTS
+#################################
+
+secrets.json
+*.pfx
+*.snk
+
+#################################
+# NUGET
+#################################
+
+packages/
+*.nupkg
+*.snupkg
+.nuget/
+
+#################################
+# TESTING
+#################################
+
+TestResults/
+coverage/
+coverage.*
+
+#################################
+# DOCKER
+#################################
+
+docker-compose.override.yml
+**/docker-compose.override.yml
+
+#################################
+# AZURE
+#################################
+
+.azure/
+**/Properties/PublishProfiles/
+
+#################################
+# TOOLING
+#################################
+
+_ReSharper*/
+*.DotSettings.user
+
+#################################
+# OS FILES
+#################################
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*~

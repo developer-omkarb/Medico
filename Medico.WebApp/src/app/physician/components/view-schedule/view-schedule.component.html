@@ -1,0 +1,110 @@
+<app-navbar [sidemenu_items]="sidemenu_items"></app-navbar>
+
+<router-outlet></router-outlet>
+<div>
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group editmargin">
+      <div class="btn btn-primary"
+           mwlCalendarPreviousView
+           [view]="view"
+           [(viewDate)]="viewDate"
+           (viewDateChange)="closeOpenMonthViewDay()">
+        Previous
+      </div>
+      <div class="btn btn-outline-secondary"
+           mwlCalendarToday
+           [(viewDate)]="viewDate">
+        Today
+      </div>
+      <div class="btn btn-primary"
+           mwlCalendarNextView
+           [view]="view"
+           [(viewDate)]="viewDate"
+           (viewDateChange)="closeOpenMonthViewDay()">
+        Next
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group editmargin">
+      <div class="btn btn-primary"
+           (click)="setView(CalendarView.Month)"
+           [class.active]="view === CalendarView.Month">
+        Month
+      </div>
+      <div class="btn btn-primary"
+           (click)="setView(CalendarView.Week)"
+           [class.active]="view === CalendarView.Week">
+        Week
+      </div>
+      <div class="btn btn-primary"
+           (click)="setView(CalendarView.Day)"
+           [class.active]="view === CalendarView.Day">
+        Day
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month"
+                           [viewDate]="viewDate"
+                           [events]="events"
+                           [refresh]="refresh"
+                           [activeDayIsOpen]="activeDayIsOpen"
+                           (dayClicked)="dayClicked($event.day)"
+                           (eventClicked)="handleEvent('Clicked', $event.event)"
+                           (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week"
+                          [viewDate]="viewDate"
+                          [events]="events"
+                          [refresh]="refresh"
+                          (eventClicked)="handleEvent('Clicked', $event.event)"
+                          (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day"
+                         [viewDate]="viewDate"
+                         [events]="events"
+                         [refresh]="refresh"
+                         (eventClicked)="handleEvent('Clicked', $event.event)"
+                         (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-day-view>
+</div>
+</div>
+<div *ngIf="showPopUp">
+<app-doctor-appointment-detail [selectedUser]="selctedData" (onCloseEvent)="closePopUp($event)"></app-doctor-appointment-detail>
+  </div>
+<div *ngIf="showAppointmenEditDialog">
+  <app-edit-appointment-form [selectedTableRow]="appointmentDetail" (closeAppointmentPromptEvent)="onCloseAppointmentPromptEvent($event)"></app-edit-appointment-form>
+</div>
+ <ng-template #modalContent let-close="close">
+  <div *ngIf="!showPopUp">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <h6> Are you sure you want to delete the appointment? </h6>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="Delete()">
+        OK
+      </button>
+      <button type="button" class="btn btn-outline-secondary" (click)="close()">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+</ng-template>
+
+
+
