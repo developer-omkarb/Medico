@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using System.Text;
 
 namespace Medico.WebAPI
@@ -70,6 +70,7 @@ namespace Medico.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Medico.WebAPI", Version = "v1" });
             });
+
             services.AddDbContext<MedicoContext>(options => {
                 options.UseNpgsql(this.Configuration.GetConnectionString("DbConnection"));
             });
