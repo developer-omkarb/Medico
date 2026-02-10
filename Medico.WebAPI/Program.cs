@@ -10,6 +10,7 @@ namespace Medico.WebAPI
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Omkar is starting build");
             CreateHostBuilder(args).Build().Run();
         }
 
