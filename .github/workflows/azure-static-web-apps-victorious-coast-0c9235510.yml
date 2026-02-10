@@ -3,11 +3,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-      - main
+      - master-medico_WORKING_.Net10.0_AzureSQLDB
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - main
+      - master-medico_WORKING_.Net10.0_AzureSQLDB
 
 jobs:
   build_and_deploy_job:
