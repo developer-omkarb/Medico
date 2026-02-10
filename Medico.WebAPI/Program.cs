@@ -22,10 +22,19 @@ namespace Medico.WebAPI
 
                     if (!string.IsNullOrWhiteSpace(keyVaultUri))
                     {
-                        config.AddAzureKeyVault(
-                            new Uri(keyVaultUri),
-                            new DefaultAzureCredential()
-                        );
+                        try
+                        {
+                            config.AddAzureKeyVault(
+                                new Uri(keyVaultUri),
+                                new DefaultAzureCredential()
+                            );
+                        }
+                        catch (Exception ex)
+                        {
+                            // Do not let Key Vault failures prevent the app from starting in Azure
+                            // Write to console so App Service and other hosts can capture the error
+                            Console.WriteLine($"Warning: Failed to load configuration from Azure Key Vault ({keyVaultUri}). Exception: {ex}");
+                        }
                     }
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
