@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,7 +43,7 @@ namespace Medico.Repository
             return entities.AsEnumerable();
         }
 
-        public T GetByProperty(Func<T, bool> condition)
+        public T GetByProperty(Expression<Func<T, bool>> condition)
         {
             return entities.Where(condition).FirstOrDefault();
         }
