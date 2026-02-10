@@ -30,6 +30,17 @@ jobs:
         with:
           node-version: '16'
 
+      - name: Install OIDC Client from Core Package
+        run: npm install @actions/core@1.6.0 @actions/http-client
+      - name: Get Id Token
+        uses: actions/github-script@v6
+        id: idtoken
+        with:
+           script: |
+               const coredemo = require('@actions/core')
+               return await coredemo.getIDToken()
+           result-encoding: string
+
       # 🚀 Build & Deploy to Azure Static Web Apps
       - name: Build And Deploy
         id: builddeploy
