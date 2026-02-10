@@ -419,13 +419,15 @@ export class AddUserComponent implements OnInit {
   }
   isUserNameExists()
   {
-    if(this.email.hasError("required")==false && this.email.hasError("email")==false)
-    {
-      this.auth.isUserNameExists(this.email.value).subscribe(exists=>{
-        if(exists){
-            this.registerForm.controls.email.setErrors({userExists:true});
-        }
-      });
+    if (this.isAddMode) {
+      if(this.email.hasError("required")==false && this.email.hasError("email")==false)
+      {
+        this.auth.isUserNameExists(this.email.value).subscribe(exists=>{
+          if(exists){
+              this.registerForm.controls.email.setErrors({userExists:true});
+          }
+        });
+      }
     }
   }
   closePopUp() {
