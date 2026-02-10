@@ -199,10 +199,7 @@ namespace Medico.Service.Implementation
             var userList = new List<User>();
             try
             {
-                userList = _context.User.Include(x => x.Person).
-                 Include(x => x.Patient).
-                 Include(x => x.Employee).ThenInclude(x=>x.Spacilities)
-                 .Include(x => x.Role).ToList();
+                userList = _context.User.ToList();
             }
             catch(Exception ex)
             {
