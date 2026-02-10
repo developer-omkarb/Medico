@@ -5,6 +5,6 @@ export const environment = {
 //update the urls once backend is hosted
   production: true,
   JsonServerUrl: 'https://your-production-domain.com',
-  ApiServerUrl: 'https://your-production-api.com/api',
+  ApiServerUrl: 'https://medico-web-api-app-service-hbesa4hycte2cwdz.centralus-01.azurewebsites.net/api',
   loginAttemptsAllowed: 3
 };
