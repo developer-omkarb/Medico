@@ -31,42 +31,28 @@ namespace Medico.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            #region JwtToken Code
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option => {
-                option.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration["Jwt:Issuer"],
-                    ValidAudience = Configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-                };
-            });
-            services.AddMvc();
-            
-            services.AddControllers().AddNewtonsoftJson(options =>
-   options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-);
-            #endregion
+            // Ensure Health Checks are registered
+            services.AddHealthChecks();
 
-            services.AddScoped<IMasterService, MasterService>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IAdminService, AdminService>();
-            services.AddScoped<IEmailService, Medico.Service.Implementation.EmailService>();
-            services.AddScoped<IPhysicianService, PhysicianService>();
-            services.AddScoped<IAppointmentService, AppointmentService>();
-            services.AddScoped<IAllergyService, AllergyService>();
-            services.AddScoped<IDiagnosisService, DiagnosisService>();
-            services.AddScoped<IProcedureService, ProcedureService>();
-            services.AddScoped<IMedicineService, MedicineService>();
-            services.AddScoped<IVitalSignsService, VitalSignsService>();
-            services.AddScoped<INurseService, NurseService>();
-            services.AddScoped<IPatientService, PatientService>();
-            services.AddScoped<NotificationService, NotificationService>();
-            services.AddScoped<ILogger, Logger>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(option => {
+                    option.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = Configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                    };
+                });
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+
+            // ... your Scoped services
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Medico.WebAPI", Version = "v1" });
@@ -77,7 +63,6 @@ namespace Medico.WebAPI
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -86,24 +71,31 @@ namespace Medico.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Medico.WebAPI v1"));
             }
-            app.UseCors(x => x
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+
             app.UseHttpsRedirection();
+
+            // 1. Must come before CustomAuthentication
             app.UseRouting();
-            app.UseAuthentication();    
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            // 2. Standard Auth Middleware
+            app.UseAuthentication();
             app.UseAuthorization();
 
+            // 3. Your Custom Middleware (Now respects AllowAnonymous)
             app.UseCustomAuthentication();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Medico Web API is running..."); }).AllowAnonymous();
-                endpoints.MapHealthChecks("/health").AllowAnonymous();
-            });
 
+            // 4. Map the endpoints
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Medico WebAPI is running..");
+                }).AllowAnonymous();
+
+                endpoints.MapHealthChecks("/health").AllowAnonymous();
+
                 endpoints.MapControllers();
             });
         }
