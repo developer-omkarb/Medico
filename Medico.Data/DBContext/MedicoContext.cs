@@ -63,7 +63,7 @@ namespace Medico.Data.DBContext
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseNpgsql("Host=localhost;Database=Medico;Username=postgres;Password=root");
+                optionsBuilder.UseNpgsql("Host=localhost;Database=Medico;Username=postgres;Password=root"); //uses localhost postgres
             }
         }
 

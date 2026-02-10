@@ -72,7 +72,7 @@ namespace Medico.WebAPI
             });
 
             services.AddDbContext<MedicoContext>(options => {
-                options.UseNpgsql(this.Configuration.GetConnectionString("DbConnection"));
+                options.UseNpgsql(this.Configuration.GetConnectionString("DbConnection"));// uses localhost postgres
             });
         }
 
