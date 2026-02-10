@@ -7,12 +7,14 @@ using Medico.WebAPI.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using System.Net;
 using System.Text;
 
 namespace Medico.WebAPI
@@ -49,7 +51,6 @@ namespace Medico.WebAPI
 );
             #endregion
 
-            services.AddControllers();
             services.AddScoped<IMasterService, MasterService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAdminService, AdminService>();
@@ -95,7 +96,12 @@ namespace Medico.WebAPI
             app.UseAuthorization();
 
             app.UseCustomAuthentication();
-            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Medico Web API is running..."); }).AllowAnonymous();
+                endpoints.MapHealthChecks("/health").AllowAnonymous();
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
