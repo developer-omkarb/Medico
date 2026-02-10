@@ -18,3 +18,18 @@ If you want to learn more about creating good readme files then refer the follow
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
 - [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+# Migrations script
+C:\Users\Omkar\source\repos\developer-omkarb\Medico>dotnet ef migrations add InitialAzureFixed --project Medico.Data --startup-project Medico.WebAPI
+C:\Users\Omkar\source\repos\developer-omkarb\Medico\Medico.WebAPI\Medico.WebAPI.csproj : warning NU1510: PackageReference Microsoft.AspNetCore.Authentication will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+Build started...
+Build succeeded.
+Done. To undo this action, use 'ef migrations remove'
+
+C:\Users\Omkar\source\repos\developer-omkarb\Medico>dotnet ef database update --project Medico.Data --startup-project Medico.WebAPI
+C:\Users\Omkar\source\repos\developer-omkarb\Medico\Medico.WebAPI\Medico.WebAPI.csproj : warning NU1510: PackageReference Microsoft.AspNetCore.Authentication will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.
+Build started...
+Build succeeded.
+Done.
+
+C:\Users\Omkar\source\repos\developer-omkarb\Medico>
