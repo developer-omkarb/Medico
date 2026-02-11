@@ -1,4 +1,4 @@
-﻿using LoggerService;
+﻿using Microsoft.Extensions.Logging;
 using Medico.Data.DBContext;
 using Medico.Data.Entities;
 using Medico.Repository;
@@ -16,11 +16,11 @@ namespace Medico.Service.Implementation
 
         private MedicoContext _context;
 
-        private ILogger _logger;
+        private ILogger<AdminService> _logger;
         private IRepository<User> _userRepo;
    
         private IUserService _userService;
-        public AdminService(IRepository<Employee> repo, MedicoContext context, IUserService userService,ILogger logger)
+        public AdminService(IRepository<Employee> repo, MedicoContext context, IUserService userService,ILogger<AdminService> logger)
 
         {
             _repo = repo;
@@ -67,10 +67,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AdminService).Name, nameof(IAdminService.GetNewEmployeeCode), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
-
-
-
+                _logger.LogError(ex, typeof(AdminService).Name + ":" + nameof(IAdminService.GetNewEmployeeCode));
             }
             return code;
         }
@@ -86,7 +83,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(AdminService).Name, nameof(IAdminService.GetRole), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AdminService).Name + ":" + nameof(IAdminService.GetRole));
             }
             return role;
 
@@ -104,7 +101,7 @@ namespace Medico.Service.Implementation
 
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AdminService).Name, nameof(IAdminService.GetUserById), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AdminService).Name + ":" + nameof(IAdminService.GetUserById));
             }
 
             return userList;
@@ -126,7 +123,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AdminService).Name, nameof(IAdminService.ManageUserAccount), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AdminService).Name + ":" + nameof(IAdminService.ManageUserAccount));
             }
             return true;
         }
@@ -150,7 +147,7 @@ namespace Medico.Service.Implementation
 
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AdminService).Name, nameof(IAdminService.UpdateUser), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AdminService).Name + ":" + nameof(IAdminService.UpdateUser));
             }
 
 
@@ -176,7 +173,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AdminService).Name, nameof(IAdminService.GetTotalUserCount), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AdminService).Name + ":" + nameof(IAdminService.GetTotalUserCount));
             }
             return count;
         }
@@ -189,7 +186,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AdminService).Name, nameof(IAdminService.GetAppointmentList), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AdminService).Name + ":" + nameof(IAdminService.GetAppointmentList));
             }
             return list;
         }
@@ -203,7 +200,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(AdminService).Name, nameof(IAdminService.GetAllUsers), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AdminService).Name + ":" + nameof(IAdminService.GetAllUsers));
             }
             return userList;
         }

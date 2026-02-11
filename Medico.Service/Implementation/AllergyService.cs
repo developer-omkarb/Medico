@@ -1,4 +1,4 @@
-﻿using LoggerService;
+﻿using Microsoft.Extensions.Logging;
 using Medico.Data.DBContext;
 using Medico.Data.Entities;
 using Medico.Repository;
@@ -13,10 +13,10 @@ namespace Medico.Service.Implementation
 {
     public class AllergyService : IAllergyService
     {
-        private IRepository<AllergyMaster> _repo;
-        private MedicoContext _context;
-        private ILogger _logger;
-        public AllergyService(IRepository<AllergyMaster> repo,MedicoContext context,ILogger logger)
+    private IRepository<AllergyMaster> _repo;
+    private MedicoContext _context;
+    private ILogger<AllergyService> _logger;
+    public AllergyService(IRepository<AllergyMaster> repo,MedicoContext context,ILogger<AllergyService> logger)
         {
             _repo = repo;
             _context = context;
@@ -31,7 +31,7 @@ namespace Medico.Service.Implementation
 
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AllergyService).Name, nameof(IAllergyService.AddAllergyData), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AllergyService).Name, nameof(IAllergyService.AddAllergyData));
             }
            
         }
@@ -48,7 +48,7 @@ namespace Medico.Service.Implementation
 
             catch(Exception ex)
             {
-                _logger.LogException(typeof(AllergyService).Name, nameof(IAllergyService.AddAllergyData), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AllergyService).Name, nameof(IAllergyService.GetAllAllergy));
             }
 
             return allergies;
@@ -65,7 +65,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(AllergyService).Name, nameof(IAllergyService.GetAllergyById), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AllergyService).Name, nameof(IAllergyService.GetAllergyById));
             }
             return allergy;
            
@@ -82,7 +82,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(AllergyService).Name, nameof(IAllergyService.UpdateAllergyData), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AllergyService).Name, nameof(IAllergyService.UpdateAllergyData));
             }
 
             return rows;

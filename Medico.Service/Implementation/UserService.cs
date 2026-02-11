@@ -1,9 +1,9 @@
-﻿using LoggerService;
-using Medico.Data.DBContext;
+﻿using Medico.Data.DBContext;
 using Medico.Data.Entities;
 using Medico.Repository;
 using Medico.Service.Abstraction;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 
@@ -14,10 +14,10 @@ namespace Medico.Service.Implementation
         private IRepository<User> userRepository;
         private MedicoContext _context;
         private IRepository<DemographicDetails> _demoRepo;
-        private ILogger _logger;
+        private ILogger<UserService> _logger;
         public UserService(IRepository<User> userRepository,
             IRepository<DemographicDetails> demoRepo,
-            MedicoContext context,ILogger logger)
+            MedicoContext context,ILogger<UserService> logger)
         {
             this.userRepository = userRepository;
             this._context = context;
@@ -57,7 +57,7 @@ namespace Medico.Service.Implementation
 
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.RegisterUser), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.RegisterUser));
             }
 
         }
@@ -70,7 +70,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.GetUserDetails), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.GetUserDetails));
             }
             return user;
         }
@@ -88,7 +88,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.VerifyChangePassword), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.VerifyChangePassword));
             }
             return isVerified;
         }
@@ -106,7 +106,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.ChangePasswordWithoutUserId), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.ChangePasswordWithoutUserId));
             }
             return IsUpdated;
         }
@@ -120,7 +120,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.IsPasswordValid), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.IsPasswordValid));
             }
             return isValid;
         }
@@ -134,7 +134,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.BlockUserAccount), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.BlockUserAccount));
             }
             return true;
         }
@@ -151,13 +151,15 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.verifyUser), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.verifyUser));
             }
             return isVerified;
         }   
 
         public User verifyAndGetUser(string username, string pwd)
         {
+            _logger.LogError(message: "Omkar is checking loggging working fine", typeof(UserService).Name, nameof(IUserService.verifyAndGetUser));
+
             bool isVerified = false;
             try
             {
@@ -174,7 +176,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.verifyAndGetUser), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.verifyAndGetUser));
             }
             return null;
         }
@@ -300,7 +302,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(UserService).Name, nameof(IUserService.ChangePassword), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(UserService).Name, nameof(IUserService.ChangePassword));
 
             }
             return IsUpdated;

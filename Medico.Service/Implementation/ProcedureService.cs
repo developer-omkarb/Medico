@@ -1,4 +1,4 @@
-﻿using LoggerService;
+﻿using Microsoft.Extensions.Logging;
 using Medico.Data.DBContext;
 using Medico.Data.Entities;
 using Medico.Repository;
@@ -13,10 +13,10 @@ namespace Medico.Service.Implementation
 {
     public class ProcedureService:IProcedureService
     {
-        private IRepository<ProcedureMaster> _repo;
-        private MedicoContext _context;
-        private ILogger _logger;
-        public ProcedureService(IRepository<ProcedureMaster> repo,MedicoContext context,ILogger logger)
+    private IRepository<ProcedureMaster> _repo;
+    private MedicoContext _context;
+    private ILogger<ProcedureService> _logger;
+    public ProcedureService(IRepository<ProcedureMaster> repo,MedicoContext context,ILogger<ProcedureService> logger)
         {
             _repo = repo;
             _context = context;
@@ -32,7 +32,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(ProcedureService).Name, nameof(IProcedureService.AddProcedureData), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(ProcedureService).Name, nameof(IProcedureService.AddProcedureData));
             }
             
         }
@@ -48,7 +48,7 @@ namespace Medico.Service.Implementation
 
             catch(Exception ex)
             {
-                _logger.LogException(typeof(ProcedureService).Name, nameof(IProcedureService.GetAllProcedure), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(ProcedureService).Name, nameof(IProcedureService.GetAllProcedure));
             }
 
             return procedures;
@@ -66,7 +66,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(ProcedureService).Name, nameof(IProcedureService.GetProcedureById), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(ProcedureService).Name, nameof(IProcedureService.GetProcedureById));
             }
 
             return procedure;
@@ -85,7 +85,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(ProcedureService).Name, nameof(IProcedureService.UpdateProcedureData), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(ProcedureService).Name, nameof(IProcedureService.UpdateProcedureData));
             }
 
             return rows;

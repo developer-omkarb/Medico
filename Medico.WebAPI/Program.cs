@@ -1,8 +1,9 @@
-using System;
 using Azure.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace Medico.WebAPI
 {
@@ -37,6 +38,12 @@ namespace Medico.WebAPI
                         }
                     }
                 })
+                .ConfigureLogging(logger =>
+                {
+                    logger.AddAzureWebAppDiagnostics();
+                    //logger.AddConsole(); //For local debugging
+                })
+                    
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

@@ -1,4 +1,4 @@
-﻿using LoggerService;
+﻿using Microsoft.Extensions.Logging;
 using Medico.Data.DBContext;
 using Medico.Data.Entities;
 using Medico.Repository;
@@ -18,9 +18,9 @@ namespace Medico.Service.Implementation
         private IUserService _userService;
         private MedicoContext _context;
         private IRepository<Patient> _patientRepo;
-        private ILogger _logger;
+        private ILogger<PatientService> _logger;
 
-        public PatientService(IRepository<Patient> patientRepo, IUserService userService, MedicoContext context, ILogger logger)
+        public PatientService(IRepository<Patient> patientRepo, IUserService userService, MedicoContext context, ILogger<PatientService> logger)
         {
             this._userService = userService;
             this._context = context;
@@ -212,7 +212,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(PatientService).Name, nameof(IPatientService.isProfileComplete), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(PatientService).Name, nameof(IPatientService.isProfileComplete));
                 return false;
             }
         }

@@ -1,4 +1,4 @@
-﻿using LoggerService;
+﻿using Microsoft.Extensions.Logging;
 using Medico.Data.DBContext;
 using Medico.Data.Entities;
 using Medico.Repository;
@@ -15,8 +15,8 @@ namespace Medico.Service.Implementation
     {
         private IRepository<MedicinMaster> _repo;
         private MedicoContext _context;
-        private ILogger _logger;
-        public MedicineService(IRepository<MedicinMaster> repo,MedicoContext context, ILogger logger)
+        private ILogger<MedicineService> _logger;
+        public MedicineService(IRepository<MedicinMaster> repo,MedicoContext context, ILogger<MedicineService> logger)
         {
             _repo = repo;
             _context = context;
@@ -33,7 +33,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(MedicineService).Name, nameof(IMedicineService.AddMedicineData), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(MedicineService).Name + ":" + nameof(IMedicineService.AddMedicineData));
             }
             
         }
@@ -50,7 +50,7 @@ namespace Medico.Service.Implementation
             }
            catch(Exception ex)
             {
-                _logger.LogException(typeof(MedicineService).Name, nameof(IMedicineService.GetAllMedicin), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(MedicineService).Name + ":" + nameof(IMedicineService.GetAllMedicin));
             }
             return medicins;
         }
@@ -66,7 +66,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(MedicineService).Name, nameof(IMedicineService.GetMedicinById), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(MedicineService).Name + ":" + nameof(IMedicineService.GetMedicinById));
             }
             return medicin;
         }
@@ -83,7 +83,7 @@ namespace Medico.Service.Implementation
             }
             catch(Exception ex)
             {
-                _logger.LogException(typeof(MedicineService).Name, nameof(IMedicineService.UpdateMedicineData), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(MedicineService).Name + ":" + nameof(IMedicineService.UpdateMedicineData));
             }
             return rows;
         }

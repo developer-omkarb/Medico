@@ -1,4 +1,4 @@
-﻿using LoggerService;
+﻿using Microsoft.Extensions.Logging;
 using Medico.Data.DBContext;
 using Medico.Data.Entities;
 using Medico.Repository;
@@ -14,15 +14,15 @@ namespace Medico.Service.Implementation
 {
     public class AppointmentService : IAppointmentService
     {
-        private MedicoContext _context;
-        private IRepository<PatientPrescription> _prescriptionrepo;
-        private IRepository<Appointment> _AppointmentRepo;
-        private ILogger _logger;
+    private MedicoContext _context;
+    private IRepository<PatientPrescription> _prescriptionrepo;
+    private IRepository<Appointment> _AppointmentRepo;
+    private ILogger<AppointmentService> _logger;
         private NotificationService _notificationService;
         public AppointmentService(MedicoContext context,
             IRepository<Appointment> AppointmentRepo,
             IRepository<PatientPrescription> prescriptionRepo,
-            ILogger logger,
+            ILogger<AppointmentService> logger,
             NotificationService notificationService)
         {
             this._context = context;
@@ -60,7 +60,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.CreateAppointment), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.CreateAppointment));
             }
 
         }
@@ -115,7 +115,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetPatientAppointments), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetPatientAppointments));
             }
 
             return appointments;
@@ -166,7 +166,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetPhysicianNameByPK), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetPhysicianNameByPK));
             }
             return name;
 
@@ -224,7 +224,7 @@ namespace Medico.Service.Implementation
 
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetAppointmentById), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetAppointmentById));
             }
 
             return data;
@@ -239,7 +239,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetPrescriptionDetailsById), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetPrescriptionDetailsById));
                 return null;
             }
         }
@@ -254,7 +254,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetDemographicDetailsById), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetDemographicDetailsById));
                 return null;
             }
         }
@@ -475,7 +475,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.savePatientDiagnosisDetails), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.savePatientDiagnosisDetails));
                 return false;
             }
         }
@@ -525,7 +525,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.AddPrescriptionDetails), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.AddPrescriptionDetails));
                 return false;
             }
         }
@@ -553,7 +553,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.saveProcedureDetails), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.saveProcedureDetails));
                 return false;
             }
         }
@@ -582,7 +582,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.saveVitalSignDetails), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.saveVitalSignDetails));
                 return false;
             }
         }
@@ -598,7 +598,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.getUserByAppointmentId), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.getUserByAppointmentId));
                 return 0;
             }
         }
@@ -620,7 +620,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetPhysicianNameByPK), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetPhysicianNameByPK));
             }
             return name;
 
@@ -642,7 +642,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(GetPatientVisitHistory), "Error: " + ex.Message + " StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(GetPatientVisitHistory));
                 return null;
             }
         }
@@ -659,7 +659,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.getVitalSignDetailsbyAppointmentId), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.getVitalSignDetailsbyAppointmentId));
                 return null;
             }
         }
@@ -678,7 +678,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetDiagnosisDetailsbyAppointmentId), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetDiagnosisDetailsbyAppointmentId));
                 return null;
             }
         }
@@ -698,7 +698,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetProcedureDetailsbyAppointmentId), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetProcedureDetailsbyAppointmentId));
                 return null;
             }
         }
@@ -718,7 +718,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.GetPrescriptionDetailsbyAppointmentId), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.GetPrescriptionDetailsbyAppointmentId));
                 return null;
             }
         }
@@ -735,7 +735,7 @@ namespace Medico.Service.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogException(typeof(AppointmentService).Name, nameof(IAppointmentService.isProfileComplete), "Error: " + ex.Message + "  StackTrace: " + ex.StackTrace, (int)LogType.Service);
+                _logger.LogError(ex, typeof(AppointmentService).Name, nameof(IAppointmentService.isProfileComplete));
                 return false;
             }
         }

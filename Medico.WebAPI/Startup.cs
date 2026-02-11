@@ -1,9 +1,10 @@
-using LoggerService;
 using Medico.Data.DBContext;
 using Medico.Repository;
 using Medico.Service.Abstraction;
 using Medico.Service.Implementation;
 using Medico.WebAPI.Middlewares;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,24 +12,34 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.ApplicationInsights;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using System;
 using System.Text;
 
 namespace Medico.WebAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
+        private readonly IWebHostEnvironment _env;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (!_env.IsDevelopment())
+            {
+                services.AddApplicationInsightsTelemetry(Configuration);
+            }
+
             #region JwtToken Code
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option => {
                 option.TokenValidationParameters = new TokenValidationParameters
@@ -44,9 +55,9 @@ namespace Medico.WebAPI
             });
             services.AddMvc();
 
-            services.AddControllers().AddNewtonsoftJson(options =>
-   options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-);
+            services.AddControllers().AddNewtonsoftJson(options => 
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             #endregion
 
             services.AddControllers();
@@ -64,7 +75,8 @@ namespace Medico.WebAPI
             services.AddScoped<INurseService, NurseService>();
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<NotificationService, NotificationService>();
-            services.AddScoped<ILogger, Logger>();
+            // replace custom logger registration with built-in logging
+            services.AddLogging();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddSwaggerGen(c =>
             {
@@ -72,7 +84,14 @@ namespace Medico.WebAPI
             });
 
             services.AddDbContext<MedicoContext>(options => {
-                options.UseAzureSql(this.Configuration.GetConnectionString("DbConnection"));
+                options.UseAzureSql(this.Configuration.GetConnectionString("DbConnection"),
+                azureSqlOptionsAction: sqlOptions =>
+                {
+                    sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 3,
+                        maxRetryDelay: TimeSpan.FromSeconds(10),
+                        errorNumbersToAdd: null);
+                });
             });
         }
 
