@@ -52,16 +52,25 @@ export class UtilService {
 
   }
 
-  showSuccess(successText) {
-    this.toastService.show(successText, { classname: 'bg-success text-light'});
+  showSuccess(message: string) {
+    this.createToast(message, 'bg-success text-light');
   }
 
-  showDanger(errorText) {
-    this.toastService.show(errorText, { classname: 'bg-danger text-light'});
+  showDanger(message: string) {
+    this.createToast(message, 'bg-danger text-light');
   }
 
-  showWarning(warningText) {
-    this.toastService.show(warningText, { classname: 'bg-warning text-dark'});
+  showWarning(message: string) {
+    this.createToast(message, 'bg-warning text-dark');
+  }
+
+  private createToast(text: string, classname: string) {
+    const id = Math.random().toString(36).substring(2, 6);
+    this.toastService.show(text, { classname, id });
+
+    setTimeout(() => {
+      this.toastService.remove(id);
+    }, 3000);
   }
 
   showOrRemoveLoader(loaderFlag : boolean){

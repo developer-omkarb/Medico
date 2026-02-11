@@ -85,7 +85,10 @@ namespace Medico.WebAPI.Controllers
                         spacilities = spacilities + spacility.Name + ", ";
 
                     }
-                    tempspacilities.Add(phy.Employee.Employeeid, spacilities.Remove((int)(spacilities?.Length - 2)));
+                    if (!String.IsNullOrEmpty(spacilities))
+                    {
+                        tempspacilities.Add(phy.Employee.Employeeid, spacilities.Remove((int)(spacilities?.Length - 2)));
+                    }
                 }
 
                 Random random = new Random();
