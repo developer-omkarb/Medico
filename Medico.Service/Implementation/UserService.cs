@@ -158,8 +158,6 @@ namespace Medico.Service.Implementation
 
         public User verifyAndGetUser(string username, string pwd)
         {
-            _logger.LogError(message: "Omkar is checking loggging working fine", typeof(UserService).Name, nameof(IUserService.verifyAndGetUser));
-
             bool isVerified = false;
             try
             {
