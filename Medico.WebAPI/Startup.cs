@@ -35,11 +35,10 @@ namespace Medico.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //if (!_env.IsDevelopment())
-            //{
-            //    services.AddApplicationInsightsTelemetry(Configuration);
-            //}
-            services.AddApplicationInsightsTelemetry(Configuration);
+            if (!_env.IsDevelopment())
+            {
+                services.AddApplicationInsightsTelemetry(Configuration);
+            }
 
             #region JwtToken Code
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option => {
