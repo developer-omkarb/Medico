@@ -62,7 +62,6 @@ AnyCPU/
 **/appsettings.Development.json
 **/appsettings.Local.json
 **/appsettings.Staging.json
-**/appsettings.Production.json
 
 # Optional safer pattern
 # **/appsettings.*.json
