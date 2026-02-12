@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,14 @@ namespace Medico.WebAPI.Controllers
     {
         private readonly IConfiguration _config;
         private readonly IUserService _userService;
+        private ILogger<LoginController> _logger;
 
         public LoginController(IConfiguration config,
-            IUserService userService)
+            IUserService userService, ILogger<LoginController> logger)
         {
             this._config = config;
             this._userService = userService;
+            _logger = logger;
         }
         /// <summary>
         /// Authenticate user
@@ -92,6 +95,9 @@ namespace Medico.WebAPI.Controllers
                 claims,
                 expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: credentials);
+
+            _logger.LogError($"jwt token checking {_config["Jwt:Issuer"]} {_config["Jwt:Audience"]}");
+            _logger.LogError($"jwt token checking {_config["Jwt:Issuer"]} {_config["Jwt:Audience"]}");
 
             return new JwtSecurityTokenHandler().WriteToken(token);
 
