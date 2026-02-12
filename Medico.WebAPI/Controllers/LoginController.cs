@@ -2,6 +2,7 @@
 using Medico.Service.Abstraction;
 using Medico.WebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -26,11 +27,12 @@ namespace Medico.WebAPI.Controllers
         private ILogger<LoginController> _logger;
 
         public LoginController(IConfiguration config,
-            IUserService userService, ILogger<LoginController> logger)
+            IUserService userService, ILogger<LoginController> logger, IWebHostEnvironment env)
         {
             this._config = config;
             this._userService = userService;
             _logger = logger;
+            _logger.LogError($"IWebHostEnvironment env: { env.EnvironmentName}");
         }
         /// <summary>
         /// Authenticate user
