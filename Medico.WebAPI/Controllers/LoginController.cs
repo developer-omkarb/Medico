@@ -97,7 +97,7 @@ namespace Medico.WebAPI.Controllers
                 signingCredentials: credentials);
 
             _logger.LogError($"jwt token checking {_config["Jwt:Issuer"]} {_config["Jwt:Audience"]}");
-            _logger.LogError($"jwt token checking {_config["Jwt:Issuer"]} {_config["Jwt:Audience"]}");
+            _logger.LogError($"Environment {_config["myenvrn:uenvrn"]}");
 
             return new JwtSecurityTokenHandler().WriteToken(token);
 
